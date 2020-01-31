@@ -1,0 +1,205 @@
+
+%% bare_jrnl_compsoc.tex
+%% V1.4a
+%% 2014/09/17
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8a or later) with an IEEE
+%% Computer Society journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_conf_compsoc.tex,
+%%                    bare_jrnl_compsoc.tex, bare_jrnl_transmag.tex
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices and paper sizes can       ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+\documentclass[10pt,conference,onecolumn,compsoc]{IEEEtran}
+
+
+\usepackage{hyperref}
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=3 cm}
+\setlist[enumerate]{leftmargin=3cm}
+
+
+
+% *** CITATION PACKAGES ***
+%
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+   \usepackage[pdftex]{graphicx}
+ 
+\else
+ 
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/tex-archive/info/epslatex/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/url/
+% Basically, \url{my_url_here}.
+
+
+
+
+\begin{document}
+
+\title{WPF Game}
+%
+%
+
+% received ..."  text while in non-compsoc journals this is reversed. Sigh.
+
+\author{Jennifer Huestis and Trever Hall% <-this % stops a space
+}
+
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+The project is a side scroller that draws inspiration from Google Chromes' dinosaur game easter egg. It is going to be computer science themed with a player that is running and trying to avoid "bugs and broken windows" as obstacles. The form of currency in the game is coffee, which can be used to buy in game upgrades. The main goal is to survive as long as possible, and you are told the amount of time you survived after you lose.
+\end{abstract}
+
+}
+
+
+% make the title area
+\maketitle
+
+
+
+\IEEEdisplaynontitleabstractindextext
+
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+
+This is a project that we are doing for a class. We don't expect to publish it or for it to have a large user-base, but we think it will be a fun and challenging game. It will follow the generic platformer design with the player auto running and incrementing the speed the longer you survive. The user will have to jump to try and avoid the obstacles. Challenges we foresee are getting the screen to scroll and making sure everything is timed correctly.
+
+
+
+\subsection{Background}
+If you have not played a platformer before, they are two dimensional games with a player that can move within that plane. Examples of games like that include the original Mario games, Flappy Birds, Terraria, Donkey Kong and many more! These games of our childhood have inspired us to create one of our very own.
+
+
+\subsection{Challenges}
+\subsubsection{Scrolling} The screen needs to scroll to the right. That is going to require auto generation of the screen from the right and deletion from the left to give the user the illusion of movement. 
+
+\subsubsection{Timing}There are many elements that rely on a system for keeping track of time. The obvious one is the user needs to know how long they survived. Other than that though, enemy and player velocity depend on a the amount of time passed (in this instance pixels per second).
+
+\subsubsection{Pixel Art}All graphics are going to be complicated since its on WPF, and we must implement a system that consistently updates the window so that you can see the graphics move. Not only do we need to time movement, but we also need to change the art with every update so that it looks like characters are moving (walking, running, flying, etc).
+
+
+
+\section{Scope}
+We want there to be a character that will start auto running toward the right when you hit "start". When the character is running randomized obstacles (broken windows and bugs) should be generated from the right of the window; the player will have to avoid them by jumping or ducking. The longer you survive (time should be displayed on the screen and counting as you play) the faster the character will run. When you die it will display the time that you survived as well as items collected on that round. The only item is coffee which can be used to buy upgrades (minimally one upgrade). The requirements seem simple at first, but are going to be difficult to fulfill.
+
+
+\subsection{Stretch Goals}
+\subsubsection{Stored High Scores}
+We want to keep a record of the top ten scores and allow the user to enter a name to associate with it (just three letters like the retro games in arcades). This should be accessible from a button on the menu. The goal is to make it keep track even if you close the game and re-open it.
+
+\subsubsection{More Items} We want to add more items to buy. Those could include different sprite packs, more weapons, and possibly a companion (a huge stretch would be different themes). All to be purchased with varying amounts of coffee.
+
+
+% that's all folks
+\end{document}
+
+
