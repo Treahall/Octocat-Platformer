@@ -472,7 +472,7 @@ Steps to hit an obstacle:
 The mockups below are a rough draft for the design of the games interfaces. It is not exactly what the final project will look like, but does introduce what screens should be available and how the user will interact with them.
 
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[scale=.2]{MockupStartScreen.jpeg}
 \caption{The start screen and menu where you can interact with the following use cases: start, view high scores, store, change skin, toggle music, toggle sound effects, view information, and quit.}
@@ -481,7 +481,7 @@ The mockups below are a rough draft for the design of the games interfaces. It i
 \caption{The screen where the user is in the game trying to avoid obstacles. }
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[!ht]
 \centering
 \includegraphics[scale=.2]{MockupEndgame.jpeg}
 \caption{The screen where the user sees stats after they hit an obstacle and can restart.}
@@ -493,6 +493,25 @@ The mockups below are a rough draft for the design of the games interfaces. It i
 \caption{The screen where the user can view the high scores.}
 
 \end{figure}
+
+\clearpage
+
+\section{Project Timeline}
+To make sure we can keep track of what needs to be done when for the project, we have generated a timeline shown in figure 14 that outlines important tasks and when to accomplish them within 30 days. Some tasks are optional, so those have been placed at the end—even though we may not get to them.
+
+\begin{figure}[!ht]
+\includegraphics[scale=.3]{Timeline.jpeg}
+\caption{Timeline for the last 30 days of the project.}
+\end{figure}
+
+\section{Project Structure}
+Our project is outlined in a UML that breaks Coding with Octocat down into classes, and it includes three design patterns that group classes together for certain tasks.
+
+\subsection{UML Outline}
+The UML outline shown below in figure 15 shows the structure of our program separated into classes that work together to make Coding with Octocat run. Some classes are grouped into design patterns; while, other classes do not need that functionality.
+
+\subsection{Design Patterns Used}
+To make Coding with Octocat functional, we are using three design patterns discussed in CSCI 352, factory method, strategy, and observer. Factory method is for generating obstacles, and strategy pattern adjusts the item appearance rate based on the distance the player has traversed. Then, there is the observer pattern that is used to keep track of the frames, and tells the player, all obstacles, and all world objects to update position.
 
 % that's all folks
 \end{document}
