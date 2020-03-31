@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  27 FEB 2020 12:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  30 MAR 2020 21:48
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -413,42 +413,42 @@ Underfull \hbox (badness 10000) in paragraph at lines 412--413
 
  []
 
-<Start.png, id=95, 969.6225pt x 296.10625pt>
+<Start.png, id=111, 969.6225pt x 296.10625pt>
 File: Start.png Graphic file (type png)
 <use Start.png>
 Package pdftex.def Info: Start.png  used on input line 432.
 (pdftex.def)             Requested size: 387.84213pt x 118.44038pt.
-<HighScores.png, id=96, 556.0775pt x 129.48375pt>
+<HighScores.png, id=112, 556.0775pt x 129.48375pt>
 File: HighScores.png Graphic file (type png)
 <use HighScores.png>
 Package pdftex.def Info: HighScores.png  used on input line 436.
 (pdftex.def)             Requested size: 278.03807pt x 64.7417pt.
-<Information.png, id=97, 579.16376pt x 130.4875pt>
+<Information.png, id=113, 579.16376pt x 130.4875pt>
 File: Information.png Graphic file (type png)
 <use Information.png>
 Package pdftex.def Info: Information.png  used on input line 443.
 (pdftex.def)             Requested size: 289.58116pt x 65.24358pt.
-<Music.png, id=98, 572.1375pt x 130.4875pt>
+<Music.png, id=114, 572.1375pt x 130.4875pt>
 File: Music.png Graphic file (type png)
 <use Music.png>
 Package pdftex.def Info: Music.png  used on input line 447.
 (pdftex.def)             Requested size: 286.06804pt x 65.24358pt.
-<SFX.png, id=99, 569.12625pt x 129.48375pt>
+<SFX.png, id=115, 569.12625pt x 129.48375pt>
 File: SFX.png Graphic file (type png)
 <use SFX.png>
 Package pdftex.def Info: SFX.png  used on input line 451.
 (pdftex.def)             Requested size: 284.56242pt x 64.7417pt.
-<Octocat_Icon.png, id=100, 602.25pt x 129.48375pt>
+<Octocat_Icon.png, id=116, 602.25pt x 129.48375pt>
 File: Octocat_Icon.png Graphic file (type png)
 <use Octocat_Icon.png>
 Package pdftex.def Info: Octocat_Icon.png  used on input line 455.
 (pdftex.def)             Requested size: 301.12425pt x 64.7417pt.
-<Store.png, id=101, 561.09625pt x 130.4875pt>
+<Store.png, id=117, 561.09625pt x 130.4875pt>
 File: Store.png Graphic file (type png)
 <use Store.png>
 Package pdftex.def Info: Store.png  used on input line 459.
 (pdftex.def)             Requested size: 280.54744pt x 65.24358pt.
-<Quit.png, id=102, 516.93124pt x 130.4875pt>
+<Quit.png, id=118, 516.93124pt x 130.4875pt>
 File: Quit.png Graphic file (type png)
 <use Quit.png>
 Package pdftex.def Info: Quit.png  used on input line 463.
@@ -458,27 +458,27 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [4 <./Start.png> <./HighScores.png>] [5 <./Information.png> <./Music.png> <./SF
 X.png> <./Octocat_Icon.png> <./Store.png> <./Quit.png>]
-<MockupStartScreen.jpeg, id=123, 1927.2pt x 1084.05pt>
+<MockupStartScreen.jpeg, id=139, 1927.2pt x 1084.05pt>
 File: MockupStartScreen.jpeg Graphic file (type jpg)
 <use MockupStartScreen.jpeg>
 Package pdftex.def Info: MockupStartScreen.jpeg  used on input line 477.
 (pdftex.def)             Requested size: 385.43318pt x 216.80615pt.
-<MockupIngame.jpeg, id=124, 1927.2pt x 1084.05pt>
+<MockupIngame.jpeg, id=140, 1927.2pt x 1084.05pt>
 File: MockupIngame.jpeg Graphic file (type jpg)
 <use MockupIngame.jpeg>
 Package pdftex.def Info: MockupIngame.jpeg  used on input line 480.
 (pdftex.def)             Requested size: 385.43318pt x 216.80615pt.
-<MockupEndgame.jpeg, id=125, 1927.2pt x 1084.05pt>
+<MockupEndgame.jpeg, id=141, 1927.2pt x 1084.05pt>
 File: MockupEndgame.jpeg Graphic file (type jpg)
 <use MockupEndgame.jpeg>
 Package pdftex.def Info: MockupEndgame.jpeg  used on input line 486.
 (pdftex.def)             Requested size: 385.43318pt x 216.80615pt.
-<MockupStore.jpeg, id=126, 1927.2pt x 1084.05pt>
+<MockupStore.jpeg, id=142, 1927.2pt x 1084.05pt>
 File: MockupStore.jpeg Graphic file (type jpg)
 <use MockupStore.jpeg>
 Package pdftex.def Info: MockupStore.jpeg  used on input line 489.
 (pdftex.def)             Requested size: 385.43318pt x 216.80615pt.
-<MockupHighscores.jpeg, id=127, 1927.2pt x 1084.05pt>
+<MockupHighscores.jpeg, id=143, 1927.2pt x 1084.05pt>
 File: MockupHighscores.jpeg Graphic file (type jpg)
 <use MockupHighscores.jpeg>
 Package pdftex.def Info: MockupHighscores.jpeg  used on input line 492.
@@ -487,9 +487,18 @@ Package pdftex.def Info: MockupHighscores.jpeg  used on input line 492.
 
 LaTeX Warning: Float too large for page by 57.5599pt on input line 495.
 
+[6
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+ <./MockupStartScreen.jpeg> <./MockupIngame.jpeg>] [7 <./MockupEndgame.jpeg> <.
+/MockupStore.jpeg> <./MockupHighscores.jpeg>]
+<Timeline.jpeg, id=159, 1656.1875pt x 1279.78125pt>
+File: Timeline.jpeg Graphic file (type jpg)
+<use Timeline.jpeg>
+Package pdftex.def Info: Timeline.jpeg  used on input line 503.
+(pdftex.def)             Requested size: 496.86009pt x 383.93733pt.
+ [8
 
+ <./Timeline.jpeg>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -501,24 +510,21 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 498.
-[6
-
- <./MockupStartScreen.jpeg> <./MockupIngame.jpeg>] [7 <./MockupEndgame.jpeg> <.
-/MockupStore.jpeg> <./MockupHighscores.jpeg>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 498.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 517.
+[9]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 517.
  (./ProjectProposal.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 498.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 498.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 517.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 517.
 Package rerunfilecheck Info: File `ProjectProposal.out' has not changed.
-(rerunfilecheck)             Checksum: CA3B906F3A29F9A99EE9E7567729EADD;947.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 498.
+(rerunfilecheck)             Checksum: 3C283D079A16EE0953EC335FD28772FC;1183.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 517.
  ) 
 Here is how much of TeX's memory you used:
- 6394 strings out of 492616
- 100402 string characters out of 6129482
- 197877 words of memory out of 5000000
- 10216 multiletter control sequences out of 15000+600000
+ 6410 strings out of 492616
+ 100606 string characters out of 6129482
+ 197881 words of memory out of 5000000
+ 10224 multiletter control sequences out of 15000+600000
  38658 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  28i,7n,28p,651b,421s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -526,10 +532,10 @@ Here is how much of TeX's memory you used:
 exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/tex
 live/2019/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2019/
 texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on ProjectProposal.pdf (7 pages, 879841 bytes).
+Output written on ProjectProposal.pdf (9 pages, 1055866 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
- 55 named destinations out of 1000 (max. 500000)
- 186 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 198 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 223 words of extra memory for PDF output out of 10000 (max. 10000000)
 
