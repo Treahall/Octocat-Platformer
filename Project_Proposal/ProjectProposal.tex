@@ -152,7 +152,7 @@
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-The project is a side scroller that draws inspiration from Google Chromes' dinosaur game easter egg. It is going to be computer science themed with Octocat running and trying to avoid "bugs and broken windows" as obstacles. The form of currency in the game is caffeinated products, which can be used to buy in game upgrades. The main goal is to survive as long as possible, and you are told the amount of time you survived (given by a running timer).
+The project is a side scroller that draws inspiration from Google Chromes' dinosaur game easter egg. It is going to be computer science themed with Octocat running and trying to avoid "bugs and broken windows" as obstacles. The form of currency in the game is energy by caffeinated products, which can be used to buy in game upgrades. The main goal is to survive as long as possible, and you are told the total distance you traveled (given by a running counter).
 \end{abstract}
 
 }
@@ -187,14 +187,14 @@ There are many challenges to cresting a video game in WPF, but ones that stand o
 
 \subsubsection{Scrolling} The screen needs to scroll to the right. That is going to require auto generation of the screen from the right and deletion from the left to give the user the illusion of movement. 
 
-\subsubsection{Timing}There are many elements that rely on a system for keeping track of time. The obvious one is the user needs to know how long they survived. Other than that though, enemy and player velocity depend on a the amount of time passed (in this instance pixels per second).
+\subsubsection{Timing}There are many elements that rely on a system for keeping track of time. The obvious one is the user needs to know how long they survived. Other than that though, enemy and player velocity depend on the amount of time passed (in this instance pixels per second).
 
 \subsubsection{Pixel Art}All graphics are going to be complicated since its on WPF, and we must implement a system that consistently updates the window so that you can see the graphics move. Not only do we need to time movement, but we also need to change the art with every update so that it looks like characters are moving (walking, running, flying, etc).
 
 
 
 \section{Scope}
-The game begins with Octocat auto running toward the right after a user hits "start". When Octocat is running randomized obstacles (broken windows and bugs) will generate from the right of the window; the player will have to avoid them by jumping or ducking. The longer you survive (time is displayed on the screen and counting as you play) the faster the Octocat will run. When you die it will display the time that you survived as well as items collected on that round. The user can use caffeinated items they pick up to buy upgrades (minimally one upgrade). The requirements seem simple at first, but are difficult to fulfill.
+The game begins with Octocat auto running toward the right after a user hits "start". When Octocat is running randomized obstacles (broken windows and bugs) will generate from the right of the window; the player will have to avoid them by jumping or ducking. The further you survive (distance is displayed on the screen and counting as you play) the faster the Octocat will run. When you die it will display the distance that you traveled as well as items collected on that round. The user can use energy from caffeinated items they pick up to buy upgrades (minimally one upgrade). The requirements seem simple at first, but are difficult to fulfill.
 
 
 \subsection{Stretch Goals}
@@ -509,6 +509,13 @@ Our project is outlined in a UML that breaks Coding with Octocat down into class
 
 \subsection{UML Outline}
 The UML outline shown below in figure 15 shows the structure of our program separated into classes that work together to make Coding with Octocat run. Some classes are grouped into design patterns; while, other classes do not need that functionality.
+
+\clearpage
+
+\begin{figure}[!ht]
+\includegraphics[scale=.18]{UML.jpg}
+\caption{UML of the project.}
+\end{figure}
 
 \subsection{Design Patterns Used}
 To make Coding with Octocat functional, we are using three design patterns discussed in CSCI 352, factory method, strategy, and observer. Factory method is for generating obstacles, and strategy pattern adjusts the item appearance rate based on the distance the player has traversed. Then, there is the observer pattern that is used to keep track of the frames, and tells the player, all obstacles, and all world objects to update position.
