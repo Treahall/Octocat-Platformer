@@ -55,18 +55,45 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Compile Include="Eitities\Beetle.cs" />
+    <Compile Include="Eitities\BrokenWindow.cs" />
+    <Compile Include="Eitities\Entity.cs" />
+    <Compile Include="Eitities\Obstacle.cs" />
+    <Compile Include="Eitities\Player.cs" />
+    <Compile Include="Eitities\Slug.cs" />
+    <Compile Include="Frame.cs" />
+    <Compile Include="GameEngine.cs" />
+    <Compile Include="HelperClasses\BackgroundAnimations.cs" />
+    <Compile Include="HelperClasses\EntityAnimations.cs" />
+    <Compile Include="HelperClasses\ItemAnimations.cs" />
+    <Compile Include="ItemCreator\Coffee.cs" />
+    <Compile Include="ItemCreator\EnergyDrink.cs" />
+    <Compile Include="ItemCreator\Item.cs" />
+    <Compile Include="ItemCreator\ItemCreator.cs" />
+    <Compile Include="ItemCreator\ItemStrategies.cs" />
+    <Compile Include="ItemCreator\Magnet.cs" />
+    <Compile Include="ItemCreator\NyanCat.cs" />
+    <Compile Include="ItemCreator\SpeedBoost.cs" />
+    <Compile Include="ItemCreator\StratFour.cs" />
+    <Compile Include="ItemCreator\StratOne.cs" />
+    <Compile Include="ItemCreator\StratThree.cs" />
+    <Compile Include="ItemCreator\StratTwo.cs" />
+    <Compile Include="ObstacleFactory\BeetleFactory.cs" />
+    <Compile Include="ObstacleFactory\ObstacleCreator.cs" />
+    <Compile Include="ObstacleFactory\ObstacleFactory.cs" />
+    <Compile Include="ObstacleFactory\SlugFactory.cs" />
+    <Compile Include="ObstacleFactory\WindowFactory.cs" />
+    <Compile Include="World.xaml.cs">
+      <DependentUpon>World.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="World.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -93,6 +120,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="AudioAssets\" />
+    <Folder Include="VisualAssets\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
