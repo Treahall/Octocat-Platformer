@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="World" Height="450" Width="800">
     <Grid>
-        
+        <Image Name="Canvas" Loaded="LoadScreen" />
     </Grid>
 </Window>
