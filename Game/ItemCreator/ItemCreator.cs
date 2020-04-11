@@ -8,5 +8,9 @@ namespace Game.ItemCreatorFile
 {
     class ItemCreator
     {
+        public void StartSpawning()
+        {
+
+        }
     }
 }

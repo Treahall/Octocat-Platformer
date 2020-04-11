@@ -7,6 +7,8 @@ using Game.ItemCreatorFile;
 using System.Windows.Media.Imaging;
 using Game.ObstacleFactory;
 using Game.Eitities;
+using Game.HelperClasses;
+using System.Windows.Input;
 
 namespace Game
 {
@@ -15,13 +17,26 @@ namespace Game
     {
         ItemCreator ItemSpawner = new ItemCreator();
         ObstacleCreator ObstacleSpawner = new ObstacleCreator();
+        BackgroundAnimator BackgorundAnimation = new BackgroundAnimator();
+        int distance;
         Player User = new Player();
+        bool gamestarted = false;
         // referencing the world in xaml.cs
         // frame used in world.xaml.cs
-        public void Start()
+        public void checkStart()
         {
+            if(!gamestarted)
+            {
+                startRunning();
+            }
+        }
 
-
+        public void startRunning()
+        {
+            ObstacleSpawner.StartSpawning();
+            ItemSpawner.StartSpawning();
+            BackgorundAnimation.StartAnimation();
+            User.Start();
         }
 
         public void TogglePause()
@@ -36,7 +51,10 @@ namespace Game
 
         public void Update()
         {
-
+            if (Keyboard.IsKeyDown(Key.Enter))
+            {
+                checkStart();
+            }
         }
     }
 }

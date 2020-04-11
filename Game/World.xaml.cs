@@ -25,7 +25,7 @@ namespace Game
         WriteableBitmap Screen;
         Frame FrameHandler;
         GameEngine GameEng;
-        bool gamestarted;
+        
         public World()
         {
             InitializeComponent();
@@ -58,6 +58,8 @@ namespace Game
             Screen.Blit(new Point(0,0), BackgroundBitMap, new Rect(new Size(BackgroundBitMap.PixelWidth, BackgroundBitMap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
 
             GameEng = new GameEngine();
+
+            //its update function gets added as a composition target upon initializing.
             FrameHandler = new Frame(GameEng);
         }
     }

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game.ObstacleFactory
+namespace Game.HelperClasses
 {
-    class ObstacleCreator
+    class BackgroundAnimator
     {
-        public void StartSpawning()
+        public void StartAnimation()
         {
 
         }
