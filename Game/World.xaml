@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Game"
         mc:Ignorable="d"
         Title="World" Height="450" Width="800">
-    <Grid>
+    <Grid Name="WorldGrid">
         <Image Name="Canvas" Loaded="LoadScreen" />
     </Grid>
 </Window>

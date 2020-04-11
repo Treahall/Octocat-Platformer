@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game.ItemCreatorFile;
+using System.Windows.Media;
 
 namespace Game
 {
@@ -17,24 +18,22 @@ namespace Game
             GameEng = g;
             Entities = new List<Entity>();
             Items = new List<Item>();
+            CompositionTarget.Rendering += Update;
         }
 
-        void Update()
+        private void Update(object sender, EventArgs e)
         {
-            foreach (var e in Entities)
+            foreach (var entity in Entities)
             {
-                //TO DO: call update on all Entities.
-                //e.Update();
+                entity.Update();
             }
 
-            foreach (var i in Items)
+            foreach (var item in Items)
             {
-                //TO DO: call update on all Items.
-                //i.Update();
+                item.Update();
             }
 
-            //TO DO: Trigger the game engines frame events using the update function.
-            //GameEng.Update();
+            GameEng.Update();
         }
     }
 }

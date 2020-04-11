@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Game.HelperClasses
 {
-    class BackgroundAnimations
+    public static class BackgroundAssets
     {
         //TO DO: figure out floor position and background position and size
       /*public static Size BackgroundSize = new Size(787, 600);
@@ -47,5 +48,8 @@ namespace Game.HelperClasses
         {
             ""
         };
+        public static Point Floor = new Point(0, 600 - 98);
+
+
     }
 }
