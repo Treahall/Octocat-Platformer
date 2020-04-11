@@ -10,9 +10,11 @@ namespace Game.HelperClasses
     public static class BackgroundAssets
     {
         //TO DO: figure out floor position and background position and size
-      /*public static Size BackgroundSize = new Size(787, 600);
-        public static Point FloorPos = new Point(0, 600 - 98);
-        public static Point BackgroundPos = new Point(0, 0);*/
+        /*public static Size BackgroundSize = new Size(787, 600);
+          public static Point FloorPos = new Point(0, 600 - 98);
+          public static Point BackgroundPos = new Point(0, 0);*/
+
+        public static string TestBackground =   "../../VisualAssets/Backgrounds/country-platform-preview.png";
 
         public static List<string> Background = new List<string>
         {

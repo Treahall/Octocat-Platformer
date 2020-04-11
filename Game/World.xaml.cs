@@ -49,7 +49,7 @@ namespace Game
 
             //TO DO: Create the background using a bitmap image and a relative link to the .png file
             //REFERENCE: BitmapImage background = new BitmapImage(new Uri("The .png file path", UriKind.Relative));
-            BitmapImage backgroundImage = new BitmapImage(new Uri("", UriKind.Relative));
+            BitmapImage backgroundImage = new BitmapImage(new Uri(BackgroundAssets.TestBackground, UriKind.Relative));
 
             //Convert backgroundImage into a WriteableBitmap
             WriteableBitmap BackgroundBitMap = new WriteableBitmap(backgroundImage);
