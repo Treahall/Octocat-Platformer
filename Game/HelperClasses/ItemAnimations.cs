@@ -8,5 +8,29 @@ namespace Game.HelperClasses
 {
     class ItemAnimations
     {
+        public static readonly List<string> Coffee = new List<string>
+        {
+            ""
+        };
+
+        public static readonly List<string> EnergyDrink = new List<string>
+        {
+            ""
+        };
+
+        public static readonly List<string> NyanCat = new List<string>
+        {
+            ""
+        };
+
+        public static readonly List<string> Magnet = new List<string>
+        {
+            ""
+        };
+
+        public static readonly List<string> SpeedBoost = new List<string>
+        {
+            ""
+        };
     }
 }
