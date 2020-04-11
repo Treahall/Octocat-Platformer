@@ -11,6 +11,9 @@ namespace Game
     class GameEngine
     {
         ItemCreator ItemSpawner = new ItemCreator();
+        public void Update()
+        {
 
+        }
     }
 }

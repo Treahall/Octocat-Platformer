@@ -8,5 +8,9 @@ namespace Game.ItemCreatorFile
 {
     class Item
     {
+        public void Update()
+        {
+
+        }
     }
 }

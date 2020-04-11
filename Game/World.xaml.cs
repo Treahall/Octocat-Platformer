@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Game.HelperClasses;
 
 namespace Game
 {
@@ -32,26 +33,32 @@ namespace Game
 
         private void LoadScreen (object sender, RoutedEventArgs e)
         {
-            //TO DO: Get window height and width
+            //Get window height and width
+            Height = (double)this.WorldGrid.ActualHeight;
+            Width = (double)this.WorldGrid.ActualWidth;
 
-            //TO DO: Store as a resource
+            //Store as a resource
+            Application.Current.Resources["WorldHeight"] = Height;
+            Application.Current.Resources["WorldWidth"] = Width;
 
             Screen = BitmapFactory.New((int)Width, (int)Height);
             Canvas.Source = Screen;
-            //TO DO: set the value of floor
+
+            //set the value of floor
+            floor = (int)BackgroundAssets.Floor.Y;
 
             //TO DO: Create the background using a bitmap image and a relative link to the .png file
             //REFERENCE: BitmapImage background = new BitmapImage(new Uri("The .png file path", UriKind.Relative));
+            BitmapImage backgroundImage = new BitmapImage(new Uri("", UriKind.Relative));
 
-            //TO DO: convert into a WriteableBitmap
-            //REFERENCE: WriteableBitmap Background = new WriteableBitmap(background);
+            //Convert backgroundImage into a WriteableBitmap
+            WriteableBitmap BackgroundBitMap = new WriteableBitmap(backgroundImage);
 
-            //Draw the WriteableBitmap "Background" onto the Image object Screen
-            //Screen.Blit(new Point(0,0), Background, new Rect(new Size(Background.PixelWidth, Background.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
+            //Draw the WriteableBitmap "BackgroundBitMap" onto the Image object "Screen".
+            Screen.Blit(new Point(0,0), BackgroundBitMap, new Rect(new Size(BackgroundBitMap.PixelWidth, BackgroundBitMap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
 
             GameEng = new GameEngine();
             FrameHandler = new Frame(GameEng);
-
         }
     }
 }

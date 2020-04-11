@@ -69,7 +69,7 @@
     <Compile Include="Eitities\Slug.cs" />
     <Compile Include="Frame.cs" />
     <Compile Include="GameEngine.cs" />
-    <Compile Include="HelperClasses\BackgroundAnimations.cs" />
+    <Compile Include="HelperClasses\BackgroundAssets.cs" />
     <Compile Include="HelperClasses\EntityAnimations.cs" />
     <Compile Include="HelperClasses\ItemAnimations.cs" />
     <Compile Include="ItemCreator\Coffee.cs" />

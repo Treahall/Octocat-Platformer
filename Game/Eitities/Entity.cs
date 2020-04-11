@@ -8,5 +8,9 @@ namespace Game
 {
     class Entity
     {
+        public void Update()
+        {
+
+        }
     }
 }
