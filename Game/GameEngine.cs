@@ -17,7 +17,6 @@ namespace Game
     {
         ItemCreator ItemSpawner = new ItemCreator();
         ObstacleCreator ObstacleSpawner = new ObstacleCreator();
-        BackgroundAnimator BackgorundAnimation = new BackgroundAnimator();
         int distance;
         Player User = new Player();
         bool gamestarted = false;
@@ -35,7 +34,6 @@ namespace Game
         {
             ObstacleSpawner.StartSpawning();
             ItemSpawner.StartSpawning();
-            BackgorundAnimation.StartAnimation();
             User.Start();
         }
 

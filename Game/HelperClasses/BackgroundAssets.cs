@@ -14,14 +14,11 @@ namespace Game.HelperClasses
           public static Point FloorPos = new Point(0, 600 - 98);
           public static Point BackgroundPos = new Point(0, 0);*/
 
-        public static string TestBackground =   "../../VisualAssets/Backgrounds/country-platform-preview.png";
+        public static string Blank_Background = "../../VisualAssets/Backgrounds/Blank_Background.png";
+        public static string Clouds = "../../VisualAssets/Backgrounds/Clouds.png";
+        public static string Foreground = "../../VisualAssets/Backgrounds/Foreground.png";
 
         public static List<string> Background = new List<string>
-        {
-            ""
-        };
-
-        public static readonly List<string> Clouds = new List<string>
         {
             ""
         };

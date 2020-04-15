@@ -23,7 +23,7 @@ namespace Game.Eitities
             jumping = false; falling = false;
             //Initial position
             // TO DO: needs a floor in entity
-            Position = new System.Numerics.Vector2((float)(StageGraphics.WindowWidth / 2), floor -= (int)GetSpriteSize().Height);
+            //Position = new System.Numerics.Vector2((float)(StageGraphics.WindowWidth / 2), floor -= (int)GetSpriteSize().Height);
         }
 
         //starts the running animation and allows you to control player with arrow keys
