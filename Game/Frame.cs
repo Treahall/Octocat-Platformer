@@ -40,7 +40,7 @@ namespace Game
 
             foreach (var entity in Entities)
             {
-                //entity.Update();
+                entity.Update(Screen);
             }
 
             foreach (var item in Items)

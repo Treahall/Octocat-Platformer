@@ -151,5 +151,32 @@
   <ItemGroup>
     <Resource Include="VisualAssets\Backgrounds\Foreground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\Octocat Running!.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\Octocat Jumping!.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\Octocat Ducking!.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\Octocat Falling 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\Octocat Falling!.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Obstacles\Bug\Bug Pose 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Obstacles\Bug\Bug Pose 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Obstacles\Bug\Bug Pose 3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Obstacles\Bug\Bug Pose 4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

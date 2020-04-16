@@ -41,8 +41,8 @@ namespace Game
         {
 
             //Store the pixel height and width as resources
-            Resources.Add("Height", this.WorldGrid.ActualHeight);
-            Resources.Add("Width", this.WorldGrid.ActualWidth);
+            Resources.Add("Height", 877);
+            Resources.Add("Width", 1440);
 
             Screen = BitmapFactory.New(Convert.ToInt32(Resources["Width"]), Convert.ToInt32(Resources["Height"]));
             Canvas.Source = Screen;

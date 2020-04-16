@@ -8,24 +8,20 @@ namespace Game.HelperClasses
 {
     class EntityAnimations
     {
-        public static readonly List<string> OctocatRun = new List<string>
-        {
-            ""
-        };
+        public static string OctocatRun = "../../VisualAssets/Entities/Player/Octocat Running!.png";
 
-        public static readonly List<string> OctocatJump = new List<string>
-        {
-            ""
-        };
+        public static string OctocatJump = "../../VisualAssets/Entities/Player/Octocat Jumping!.png";
 
-        public static readonly List<string> OctocatDuck = new List<string>
-        {
-            ""
-        };
+        public static string OctocatFalling = "../../VisualAssets/Entities/Player/Octocat Falling 2.png";
+
+        public static string OctocatDuck = "../../VisualAssets/Entities/Player/Octocat Ducking!.png";
 
         public static readonly List<string> Beetle = new List<string>
         {
-            ""
+            "../../VisualAssets/Entities/Obstacles/Bug Pose 1.png",
+            "../../VisualAssets/Entities/Obstacles/Bug Pose 2.png",
+            "../../VisualAssets/Entities/Obstacles/Bug Pose 3.png",
+            "../../VisualAssets/Entities/Obstacles/Bug Pose 4.png"
         };
 
         public static readonly List<string> BrokenWindow = new List<string>

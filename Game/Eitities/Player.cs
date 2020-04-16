@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
 
 namespace Game.Eitities
 {
@@ -11,8 +15,9 @@ namespace Game.Eitities
     {
         bool jumping, falling, ducking;
         int jumpForce = 400, force;
-        public List<string> jumpAnimation;
-        public List<string> duckAnimation;
+        float playerPositionX = 1440 / 8;
+        public string jumpAnimation;
+        public string duckAnimation;
 
         // TO DO: Start() versus Player()?? 
         public Player() : base()
@@ -20,22 +25,21 @@ namespace Game.Eitities
             LoadAnimations();
             force = -jumpForce;
 
-            jumping = false; falling = false;
+            jumping = false; falling = false; ducking = false;
             //Initial position
-            // TO DO: needs a floor in entity
-            //Position = new System.Numerics.Vector2((float)(StageGraphics.WindowWidth / 2), floor -= (int)GetSpriteSize().Height);
+            Position = new System.Numerics.Vector2((float)(playerPositionX), floor -= (int)GetSpriteSize().Height);
         }
 
         //starts the running animation and allows you to control player with arrow keys
         public void Start()
         {
-
+            setAnimation();
         }
 
         // TO DO: needed??
         public override void setSpeed()
         {
-            //speed = 240;
+            speed = 0;
         }
 
         // TO DO: needed??
@@ -45,25 +49,23 @@ namespace Game.Eitities
         }
 
         //check for arrow keys pressed then jump or duck if correct key is pressed
-        public void Update()
+        public override void Update(WriteableBitmap s)
         {
             if(Keyboard.IsKeyDown(Key.Down))
             {
                 Duck();
             }
-            if(Keyboard.IsKeyDown(Key.Up))
+            else if(Keyboard.IsKeyDown(Key.Up))
             {
                 Jump();
             }
+            Draw(s);
         }
-        // TO DO: should this be in Update()??
-        /*
-        public override void GameTick(float millisecondsPassed)
-        {
-            base.GameTick(millisecondsPassed);
-        }
-        */
 
+        public override void Draw(WriteableBitmap surface)
+        {
+            base.Draw(surface);
+        }
 
         // TO DO: Figure out algorithm for jumping in place. 
         //Should just move the player up and down in a straight line. Should switch animation when player begins falling.
@@ -74,7 +76,6 @@ namespace Game.Eitities
         }
 
         // TO DO: Change Octocat size to be shorter with the animation to avoid obstacles.
-        //Should scrunch up Octocat, but should not move Octocat.
         void Duck()
         {
             ducking = true;
@@ -101,7 +102,7 @@ namespace Game.Eitities
             {
                 CurrentAnimation = jumpAnimation;
             }
-
+            
             if (previousAnimation != CurrentAnimation) AnimationIndex = 0;
         }
     }

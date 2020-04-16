@@ -22,6 +22,7 @@ namespace Game
         bool gamestarted = false;
         // referencing the world in xaml.cs
         // frame used in world.xaml.cs
+
         public void checkStart()
         {
             if(!gamestarted)
