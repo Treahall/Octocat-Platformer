@@ -203,7 +203,7 @@ There are a lot of additions we would like to add to the game, but two that we b
 \subsubsection{Stored High Scores}
 We want to keep a record of the top ten scores and allow the user to enter a name to associate with it (just three letters like the retro games in arcades). This should be accessible from a button on the menu. The goal is to make it keep track even if you close the game and re-open it.
 
-\subsubsection{More Items} We want to add more items to buy. Things that we would like to include are an invincibility power-up where Octocat will start riding a flying rainbow cat avoiding all obstacles, a companion (it just follows the player around), and a variety of colors for Octocat.
+\subsubsection{More Items} We want to add more items to buy. Things that we would like to include are an invincibility power-up where Octocat will start riding a flying rainbow cat avoiding all obstacles, a companion (it just follows the player around), a magnet power-up for pulling in items from a distance, and a variety of colors for Octocat.
 
 \subsection{Requirements}
 To make the game functional and provide each user with a good experience, it will have to follow the requirements we gathered below:
@@ -255,11 +255,9 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \hline
 8 & Toggle Sound Effects on/off& Normal User & Low & 3\\
 \hline
-9 & Quit the Game & Normal User & Low & 2\\
+9 & Avoid Obstacles & Normal User & High & 1\\
 \hline
-10 & Avoid Obstacles & Normal User & High & 1\\
-\hline
-11 & Hitting Obstacles & Normal User & High & 1\\
+10 & Hitting Obstacles & Normal User & High & 1\\
 \hline
 
 \end{tabular}
@@ -386,20 +384,6 @@ Steps to toggle the sound effects:
 
 \begin{itemize}
 \item[Use Case Number:] 9
-\item[Use Case Name:] Quit the Game
-\item[Description:] The user wants to quit the game.
-\item[Precondition:] User is at the start menu.
-\end{itemize}
-
-Steps to view quit the game:
-
-\begin{enumerate}
-\item User left clicks the quit icon.
-\item[Termination Outcome:] The program will stop running.\\
-\end{enumerate}
-
-\begin{itemize}
-\item[Use Case Number:] 10
 \item[Use Case Name:] Avoid Obstacles
 \item[Description:] The user wants to avoid obstacles.
 \item[Precondition:] User has started the game, by clicking the start button.
@@ -413,7 +397,7 @@ Steps to avoid obstacles:
 \end{enumerate}
 
 \begin{itemize}
-\item[Use Case Number:] 11
+\item[Use Case Number:] 10
 \item[Use Case Name:] Hitting Obstacles
 \item[Description:] The user fails to avoid an obstacle.
 \item[Precondition:] User has started the game, by clicking the start button.
@@ -436,14 +420,16 @@ Steps to hit an obstacle:
 \includegraphics[scale=.5]{HighScores.png}
 \caption{Use case for viewing high scores.}
 \label{Scores}
-\end{figure}
 
-\begin{figure}[h!]
-\centering
 \includegraphics[scale=.5]{Information.png}
 \caption{Use case to view information.}
 \label{Info}
+\end{figure}
 
+\clearpage
+
+\begin{figure}[h!]
+\centering
 \includegraphics[scale=.5]{Music.png}
 \caption{Use case to toggle music.}
 \label{Music}
@@ -459,26 +445,20 @@ Steps to hit an obstacle:
 \includegraphics[scale=.5]{Store.png}
 \caption{Use case to buy items from the store.}
 \label{Store}
-
-\includegraphics[scale=.5]{Quit.png}
-\caption{Use case to quit the game.}
-\label{Quit}
 \end{figure}
-
 
 \clearpage
 
 \subsection{Interface Mockups}
-The mockups below are a rough draft for the design of the games interfaces. It is not exactly what the final project will look like, but does introduce what screens should be available and how the user will interact with them.
+The mockups below are a rough draft for the design of the games interfaces. It is not exactly what the final project will look like, but it does introduce what screens should be available and how the user will interact with them.
 
-
-\begin{figure}[!ht]
+\begin{figure}[!ht] 
 \centering
 \includegraphics[scale=.2]{MockupStartScreen.jpeg}
 \caption{The start screen and menu where you can interact with the following use cases: start, view high scores, store, change skin, toggle music, toggle sound effects, view information, and quit.}
 
 \includegraphics[scale=.2]{MockupIngame.jpeg}
-\caption{The screen where the user is in the game trying to avoid obstacles. }
+\caption{The screen where the user is in the game trying to avoid obstacles after starting the game. }
 \end{figure}
 
 \begin{figure}[!ht]
@@ -487,32 +467,34 @@ The mockups below are a rough draft for the design of the games interfaces. It i
 \caption{The screen where the user sees stats after they hit an obstacle and can restart.}
 
 \includegraphics[scale=.2]{MockupStore.jpeg}
-\caption{The screen where the user can buy items and upgrades.}
+\caption{The screen where the user can buy items and upgrades and is accessed after entering the store from the main menu.}
 
 \includegraphics[scale=.2]{MockupHighscores.jpeg}
-\caption{The screen where the user can view the high scores.}
+\caption{The screen where the user can view the high scores and is accessed from the main menu.}
 
 \end{figure}
 
 \clearpage
 
 \section{Project Timeline}
-To make sure we can keep track of what needs to be done when for the project, we have generated a timeline shown in figure 14 that outlines important tasks and when to accomplish them within 30 days. Some tasks are optional, so those have been placed at the end—even though we may not get to them.
+To make sure we can keep track of what needs to be done when for the project, we have generated a timeline shown in figure 13 that outlines important tasks and when they have been accomplished over the semester. Some tasks are optional, so those have been placed towards the end—even though we may not get to them.
 
 \begin{figure}[!ht]
-\includegraphics[scale=.3]{Timeline.jpeg}
-\caption{Timeline for the last 30 days of the project.}
+\centering
+\includegraphics[scale=.7]{Timeline_Update}
+\caption{Timeline for the duration of the project over the past 13 weeks.}
 \end{figure}
 
 \section{Project Structure}
-Our project is outlined in a UML that breaks Coding with Octocat down into classes, and it includes three design patterns that group classes together for certain tasks.
+Our project is outlined in a UML that breaks Coding with Octocat down into several classes, and it includes three design patterns that group classes together for certain tasks. The World.xaml.cs class links to the World.xaml class, which is the container for the game. World.xaml.cs creates frame handlers and a game engine to get the game running. The frame handler links to all of the entities created to keep them updated through the game engine. One of the last major class groups is for the items, which are created based on the current algorithm in place, and it is also passed through the game engine.
 
 \subsection{UML Outline}
-The UML outline shown below in figure 15 shows the structure of our program separated into classes that work together to make Coding with Octocat run. Some classes are grouped into design patterns; while, other classes do not need that functionality.
+The UML outline shown below in figure 14 shows the structure of our program separated into classes that work together to make Coding with Octocat run. Some classes are grouped into design patterns; while, other classes do not need that functionality.
 
 \clearpage
 
 \begin{figure}[!ht]
+\centering
 \includegraphics[scale=.18]{UML.jpg}
 \caption{UML of the project.}
 \end{figure}
