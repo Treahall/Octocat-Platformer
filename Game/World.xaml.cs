@@ -51,7 +51,7 @@ namespace Game
             WorldBackground = new BackgroundAnimator(Screen);
 
             //Initializes the object that runs the game.
-            GameEng = new GameEngine();
+            GameEng = new GameEngine(Screen);
 
             //its update function gets added as a composition target upon initializing.
             FrameHandler = new Frame(GameEng, Screen);

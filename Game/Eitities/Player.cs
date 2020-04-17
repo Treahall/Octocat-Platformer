@@ -27,13 +27,32 @@ namespace Game.Eitities
 
             jumping = false; falling = false; ducking = false;
             //Initial position
-            Position = new System.Numerics.Vector2((float)(playerPositionX), floor -= (int)GetSpriteSize().Height);
+            Position = new System.Numerics.Vector2((float)(playerPositionX), floor += (int)GetSpriteSize().Height);
         }
 
         //starts the running animation and allows you to control player with arrow keys
-        public void Start()
+        public void Start(WriteableBitmap s)
         {
             setAnimation();
+            
+            if (Keyboard.IsKeyDown(Key.Up))
+            {
+                Jump();
+                jumping = false;
+            }
+            if (!Keyboard.IsKeyDown(Key.Up) & !falling)
+            {
+                if (Keyboard.IsKeyDown(Key.Down))
+                {
+                    Duck();
+                    ducking = false;
+                }
+                else
+                {
+                    CurrentAnimation = runAnimation;
+                }
+            }
+            Draw(s);
         }
 
         // TO DO: needed??
@@ -51,13 +70,22 @@ namespace Game.Eitities
         //check for arrow keys pressed then jump or duck if correct key is pressed
         public override void Update(WriteableBitmap s)
         {
-            if(Keyboard.IsKeyDown(Key.Down))
-            {
-                Duck();
-            }
-            else if(Keyboard.IsKeyDown(Key.Up))
+            if (Keyboard.IsKeyDown(Key.Up))
             {
                 Jump();
+                jumping = false;
+            }
+            if (!Keyboard.IsKeyDown(Key.Up))
+            {
+                if (Keyboard.IsKeyDown(Key.Down))
+                {
+                    Duck();
+                    ducking = false;
+                }
+                else
+                {
+                    CurrentAnimation = runAnimation;
+                }
             }
             Draw(s);
         }
@@ -71,8 +99,37 @@ namespace Game.Eitities
         //Should just move the player up and down in a straight line. Should switch animation when player begins falling.
         void Jump()
         {
+            
+            
             jumping = true;
             setAnimation();
+            //Velocity = new System.Numerics.Vector2(0, Velocity.Y);
+            //
+
+            //Position -= Velocity * (200 / 1000f);
+            /*
+            if (Position.Y < floor)
+            {
+                Velocity = new System.Numerics.Vector2(0, 0); // sets vertical velocity to zero
+                Position = new System.Numerics.Vector2(Position.X, floor += (int)GetSpriteSize().Height); // resets the base vertical position
+                jumping = false; //stops jumping 
+                falling = false;
+                force = -jumpForce;
+            }
+            else if (force < jumpForce)
+            {
+                force += 50;
+                Velocity = new System.Numerics.Vector2(0, -force);
+                //Position -= Velocity * (200 / 1000f);
+                //Jump();
+            }
+            
+            if (force >= 0)
+            {
+                falling = true;
+                //Jump();
+            }*/
+            
         }
 
         // TO DO: Change Octocat size to be shorter with the animation to avoid obstacles.
@@ -102,8 +159,16 @@ namespace Game.Eitities
             {
                 CurrentAnimation = jumpAnimation;
             }
-            
-            if (previousAnimation != CurrentAnimation) AnimationIndex = 0;
+            else
+            {
+                CurrentAnimation = runAnimation;
+            }
+
+            if (previousAnimation != CurrentAnimation)
+            {
+                //Position = new System.Numerics.Vector2((float)(playerPositionX), floor += (int)GetSpriteSize().Height);
+                AnimationIndex = 0;
+            }
         }
     }
 }

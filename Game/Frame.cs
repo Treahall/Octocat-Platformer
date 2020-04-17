@@ -27,7 +27,7 @@ namespace Game
             timer.Interval = TimeSpan.FromSeconds(.0333); //.0333 sets 30 FPS
             timer.Tick += Update;
             timer.Start();
-
+            
             Screen = s;
             GameEng = g;
             Entities = new List<Entity>();
