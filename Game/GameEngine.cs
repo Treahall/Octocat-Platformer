@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Game.ItemCreatorFile;
 using System.Windows.Media.Imaging;
 using Game.ObstacleFactory;
-using Game.Eitities;
+using Game.Entities;
 using Game.HelperClasses;
 using System.Windows.Input;
 

@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Game.ObstacleFactory
 {
-    class SlugFactory
+    class SlugFactory : ObstacleFactory
     {
+
+
     }
 }
