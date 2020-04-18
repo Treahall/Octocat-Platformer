@@ -173,7 +173,27 @@
     <Resource Include="VisualAssets\Entities\Obstacles\Bug\Bug Pose 4.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="VisualAssets\Entities\Player\Octocat Ducking!.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\BrokenWindow\Larger broken window.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 1.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 2.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 3.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 4.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 5.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 6.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 7.png" />
+    <Resource Include="VisualAssets\Entities\Obstacles\Snail\Snail 8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\Octocat Legs Backward.png" />
+    <Resource Include="VisualAssets\Entities\Player\Octocat Legs Forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\Octocat Duck 1.png" />
+    <Resource Include="VisualAssets\Entities\Player\Octocat Duck 2.png" />
+    <Resource Include="VisualAssets\Entities\Player\Octocat Duck 3.png" />
+    <Resource Include="VisualAssets\Entities\Player\Octocat Duck 4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

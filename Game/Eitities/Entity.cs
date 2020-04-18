@@ -21,9 +21,9 @@ namespace Game
         public double leftbound = 0, rightbound;
 
         //stores all animations for an entity
-        public string CurrentAnimation = null;
-        public string previousAnimation = null;
-        public string runAnimation = null;
+        public List<string> CurrentAnimation = null;
+        public List<string> previousAnimation = null;
+        public List<string> runAnimation = null;
 
         public Vector2 Position { get; set; } //Location of game entity. = (X, Y).
         public Vector2 Velocity { get; set; } //Velocity of game entity in pixels/sec. = (Change of X, Change of Y)

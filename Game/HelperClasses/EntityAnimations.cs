@@ -8,13 +8,37 @@ namespace Game.HelperClasses
 {
     class EntityAnimations
     {
-        public static string OctocatRun = "../../VisualAssets/Entities/Player/Octocat Running!.png";
 
-        public static string OctocatJump = "../../VisualAssets/Entities/Player/Octocat Jumping!.png";
+        public static readonly List<string> OctocatJump = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/Octocat Jumping!.png",
+            "../../VisualAssets/Entities/Player/Octocat Jumping!.png"
+        };
 
-        public static string OctocatFalling = "../../VisualAssets/Entities/Player/Octocat Falling 2.png";
+        public static readonly List<string> OctocatFalling = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/Octocat Falling 2.png",
+            "../../VisualAssets/Entities/Player/Octocat Falling 2.png"
+        };
 
-        public static string OctocatDuck = "../../VisualAssets/Entities/Player/Octocat Ducking!.png";
+        public static readonly List<string> OctocatDuck = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/Octocat Duck 1.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 2.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 3.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 4.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 3.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 2.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 1.png"
+        };
+
+        public static readonly List<string> OctocatRun = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/Octocat Running!.png",
+            "../../VisualAssets/Entities/Player/Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/Octocat Running!.png",
+            "../../VisualAssets/Entities/Player/Octocat Legs Forward.png"
+        };
 
         public static readonly List<string> Beetle = new List<string>
         {
@@ -26,12 +50,20 @@ namespace Game.HelperClasses
 
         public static readonly List<string> BrokenWindow = new List<string>
         {
-            ""
+            "../../VisualAssets/Entities/Obstacles/Larger broken window.png"
+            "../../VisualAssets/Entities/Obstacles/Larger broken window.png"
         };
 
         public static readonly List<string> Slug = new List<string>
         {
-            ""
+            "../../VisualAssets/Entities/Obstacles/Snail 1.png",
+            "../../VisualAssets/Entities/Obstacles/Snail 2.png",
+            "../../VisualAssets/Entities/Obstacles/Snail 3.png",
+            "../../VisualAssets/Entities/Obstacles/Snail 4.png",
+            "../../VisualAssets/Entities/Obstacles/Snail 5.png",
+            "../../VisualAssets/Entities/Obstacles/Snail 6.png",
+            "../../VisualAssets/Entities/Obstacles/Snail 7.png",
+            "../../VisualAssets/Entities/Obstacles/Snail 8.png"
         };
     }
 }

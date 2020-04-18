@@ -16,8 +16,8 @@ namespace Game.Entities
         bool jumping, falling, ducking;
         int jumpForce = 400, force;
         float playerPositionX = 1440 / 8;
-        public string jumpAnimation;
-        public string duckAnimation;
+        public List<string> jumpAnimation;
+        public List<string> duckAnimation;
 
         // TO DO: Start() versus Player()?? 
         public Player() : base()
