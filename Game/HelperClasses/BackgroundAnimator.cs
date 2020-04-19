@@ -19,17 +19,17 @@ namespace Game.HelperClasses
         public BackgroundAnimator(WriteableBitmap s)
         {
             this.Screen = s;
-            currentBackground = BackgroundAssets.Blank_Background;
-            
         }
 
         public void StartAnimation()
         {
-
+            currentBackground = BackgroundAssets.Start_Screen;
+            LoadBackground();
         }
 
         public void Update()
         {
+            currentBackground = BackgroundAssets.Blank_Background;
             LoadBackground();
             MoveClouds();
             MoveForeground();

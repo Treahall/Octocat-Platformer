@@ -11,14 +11,12 @@ namespace Game.HelperClasses
 
         public static readonly List<string> OctocatJump = new List<string>
         {
-            "../../VisualAssets/Entities/Player/Octocat Jumping!.png",
             "../../VisualAssets/Entities/Player/Octocat Jumping!.png"
         };
 
         public static readonly List<string> OctocatFalling = new List<string>
         {
-            "../../VisualAssets/Entities/Player/Octocat Falling 2.png",
-            "../../VisualAssets/Entities/Player/Octocat Falling 2.png"
+            "../../VisualAssets/Entities/Player/Octocat Falling!.png"
         };
 
         public static readonly List<string> OctocatDuck = new List<string>
@@ -37,7 +35,8 @@ namespace Game.HelperClasses
             "../../VisualAssets/Entities/Player/Octocat Running!.png",
             "../../VisualAssets/Entities/Player/Octocat Legs Backward.png",
             "../../VisualAssets/Entities/Player/Octocat Running!.png",
-            "../../VisualAssets/Entities/Player/Octocat Legs Forward.png"
+            "../../VisualAssets/Entities/Player/Octocat Legs Forward.png",
+            "../../VisualAssets/Entities/Player/Octocat Running!.png"
         };
 
         public static readonly List<string> Beetle = new List<string>
@@ -50,7 +49,6 @@ namespace Game.HelperClasses
 
         public static readonly List<string> BrokenWindow = new List<string>
         {
-            "../../VisualAssets/Entities/Obstacles/Larger broken window.png"
             "../../VisualAssets/Entities/Obstacles/Larger broken window.png"
         };
 

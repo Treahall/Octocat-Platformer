@@ -55,7 +55,7 @@ namespace Game
 
             //its update function gets added as a composition target upon initializing.
             FrameHandler = new Frame(GameEng, Screen);
-            FrameHandler.backgroundAnimator = WorldBackground;
+            GameEng.backgroundAnimator = WorldBackground;
         }
     }
 }

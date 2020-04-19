@@ -16,7 +16,6 @@ namespace Game
         GameEngine GameEng;
         List<Entity> Entities;
         List<Item> Items;
-        public BackgroundAnimator backgroundAnimator;
         WriteableBitmap Screen;
         DispatcherTimer timer;
 
@@ -36,8 +35,6 @@ namespace Game
 
         private void Update(object sender, EventArgs e)
         {
-            backgroundAnimator.Update();
-
             foreach (var entity in Entities)
             {
                 entity.Update(Screen);

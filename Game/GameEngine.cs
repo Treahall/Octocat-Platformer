@@ -18,6 +18,7 @@ namespace Game
         WriteableBitmap Screen;
         ItemCreator ItemSpawner = new ItemCreator();
         ObstacleCreator ObstacleSpawner = new ObstacleCreator();
+        public BackgroundAnimator backgroundAnimator;
         int distance;
         Player User = new Player();
         bool gamestarted = false, gameOver = false;
@@ -35,10 +36,15 @@ namespace Game
             {
                 startRunning();
             }
+            else
+            {
+                //end animations and load game over screen
+            }
         }
 
         public void startRunning()
         {
+            backgroundAnimator.Update();
             ObstacleSpawner.StartSpawning();
             ItemSpawner.StartSpawning();
             User.Start(Screen);
@@ -56,6 +62,7 @@ namespace Game
 
         public void Update()
         {
+            backgroundAnimator.StartAnimation();
             if (Keyboard.IsKeyDown(Key.Enter) || gamestarted)
             {
                 gamestarted = true;

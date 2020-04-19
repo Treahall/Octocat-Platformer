@@ -17,7 +17,7 @@ namespace Game
         public int floor = (int)(BackgroundAssets.Floor.Y);
 
         public int AnimationIndex = 0, speed;
-        public int FrameCount = 0, Fpa = 10; //fpa is frames per animation.
+        public int FrameCount = 0, Fpa = 1; //fpa is frames per animation.
         public double leftbound = 0, rightbound;
 
         //stores all animations for an entity
@@ -43,15 +43,15 @@ namespace Game
         {
             if (CurrentAnimation != null)
             {
-                return new Size((double)new BitmapImage(new Uri(CurrentAnimation, UriKind.Relative)).PixelWidth,
-                    (double)new BitmapImage(new Uri(CurrentAnimation, UriKind.Relative)).PixelHeight);
+                return new Size((double)new BitmapImage(new Uri(CurrentAnimation[AnimationIndex], UriKind.Relative)).PixelWidth,
+                    (double)new BitmapImage(new Uri(CurrentAnimation[AnimationIndex], UriKind.Relative)).PixelHeight);
             }
             else return new Size(0, 0);
         }
 
         public virtual void Draw(WriteableBitmap surface)
         {
-            BitmapImage img = new BitmapImage(new Uri(CurrentAnimation, UriKind.Relative));
+            BitmapImage img = new BitmapImage(new Uri(CurrentAnimation[AnimationIndex], UriKind.Relative));
             WriteableBitmap BackgroundBitMap = new WriteableBitmap(img);
 
             //merge image onto screen
@@ -59,14 +59,14 @@ namespace Game
 
 
             //resets animation index to 0 if animation index + 1 is out of bounds
-            /*if (AnimationIndex >= CurrentAnimation.Count - 1)
+            if (AnimationIndex >= CurrentAnimation.Count - 1)
                 AnimationIndex = 0;
             //Increments animation index by 1 when FrameCount is less then fpa
             else if ((FrameCount += 1) > Fpa)
             {
                 AnimationIndex += 1;
                 FrameCount = 0;
-            }*/
+            }
         }
     }
 }

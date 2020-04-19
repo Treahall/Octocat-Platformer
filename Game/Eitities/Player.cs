@@ -15,42 +15,50 @@ namespace Game.Entities
     {
         bool jumping, falling, ducking;
         int jumpForce = 400, force;
-        float playerPositionX = 1440 / 8;
-        public List<string> jumpAnimation;
-        public List<string> duckAnimation;
+        float userPosY, playerPositionX = 1440 / 8;
+        float userVelocityY = 15;
+        public List<string> jumpAnimation, duckAnimation, fallAnimation;
 
-        // TO DO: Start() versus Player()?? 
         public Player() : base()
         {
             LoadAnimations();
             force = -jumpForce;
 
             jumping = false; falling = false; ducking = false;
+
+            userPosY = floor += (int)GetSpriteSize().Height; //677 is the initial size
             //Initial position
-            Position = new System.Numerics.Vector2((float)(playerPositionX), floor += (int)GetSpriteSize().Height);
+            Position = new System.Numerics.Vector2((float)(playerPositionX), userPosY);
+
+            //Initial velocity
+            Velocity = new System.Numerics.Vector2(0, 0);
         }
 
-        //starts the running animation and allows you to control player with arrow keys
+        //Starts the running animation and allows you to control player with arrow keys
         public void Start(WriteableBitmap s)
         {
             setAnimation();
-            
-            if (Keyboard.IsKeyDown(Key.Up))
+
+            if (falling)
+            {
+                Fall();
+            }
+            else if (jumping)
             {
                 Jump();
-                jumping = false;
             }
-            if (!Keyboard.IsKeyDown(Key.Up) & !falling)
+            else if (Keyboard.IsKeyDown(Key.Up))
             {
-                if (Keyboard.IsKeyDown(Key.Down))
-                {
-                    Duck();
-                    ducking = false;
-                }
-                else
-                {
-                    CurrentAnimation = runAnimation;
-                }
+                Jump();
+            }
+            else if (Keyboard.IsKeyDown(Key.Down))
+            {
+                Duck();
+                ducking = false;
+            }
+            else
+            {
+                CurrentAnimation = runAnimation;
             }
             Draw(s);
         }
@@ -58,7 +66,7 @@ namespace Game.Entities
         // TO DO: needed??
         public override void setSpeed()
         {
-            speed = 0;
+            //speed = 0;
         }
 
         // TO DO: needed??
@@ -67,25 +75,29 @@ namespace Game.Entities
 
         }
 
-        //check for arrow keys pressed then jump or duck if correct key is pressed
+        //Checks for arrow keys pressed then jump or duck if correct key is pressed
         public override void Update(WriteableBitmap s)
         {
-            if (Keyboard.IsKeyDown(Key.Up))
+            if (falling)
+            {
+                Fall();
+            }
+            else if (jumping)
             {
                 Jump();
-                jumping = false;
             }
-            if (!Keyboard.IsKeyDown(Key.Up))
+            else if (Keyboard.IsKeyDown(Key.Up))
             {
-                if (Keyboard.IsKeyDown(Key.Down))
-                {
-                    Duck();
-                    ducking = false;
-                }
-                else
-                {
-                    CurrentAnimation = runAnimation;
-                }
+                Jump();
+            }
+            else if (Keyboard.IsKeyDown(Key.Down))
+            {
+                Duck();
+                ducking = false;
+            }
+            else
+            {
+                CurrentAnimation = runAnimation;
             }
             Draw(s);
         }
@@ -94,43 +106,48 @@ namespace Game.Entities
         {
             base.Draw(surface);
         }
-
-        // TO DO: Figure out algorithm for jumping in place. 
-        //Should just move the player up and down in a straight line. Should switch animation when player begins falling.
+        
+        //Should move the player up in a straight line. 
         void Jump()
         {
-            
-            
             jumping = true;
             setAnimation();
-            //Velocity = new System.Numerics.Vector2(0, Velocity.Y);
-            //
 
-            //Position -= Velocity * (200 / 1000f);
-            /*
-            if (Position.Y < floor)
-            {
-                Velocity = new System.Numerics.Vector2(0, 0); // sets vertical velocity to zero
-                Position = new System.Numerics.Vector2(Position.X, floor += (int)GetSpriteSize().Height); // resets the base vertical position
-                jumping = false; //stops jumping 
-                falling = false;
-                force = -jumpForce;
-            }
-            else if (force < jumpForce)
-            {
-                force += 50;
-                Velocity = new System.Numerics.Vector2(0, -force);
-                //Position -= Velocity * (200 / 1000f);
-                //Jump();
-            }
             
-            if (force >= 0)
+            if (userPosY < 420) // jump max
             {
+                //user starts falling
+                Fall();
+                jumping = false;
                 falling = true;
-                //Jump();
-            }*/
-            
+            }
+            else 
+            {
+                userPosY -= userVelocityY;
+                Position = new System.Numerics.Vector2(playerPositionX, userPosY);
+            }
         }
+
+        //Should move the player down in a straight line.
+        void Fall()
+        {
+            setAnimation();
+
+            if (userPosY > 677) //fall max
+            {
+                //user lands
+                userPosY = 677;
+                Position = new System.Numerics.Vector2(playerPositionX, userPosY);
+                falling = false;
+            }
+            else
+            {
+                userPosY += userVelocityY;
+                Position = new System.Numerics.Vector2(playerPositionX, userPosY);
+            }
+
+        }
+
 
         // TO DO: Change Octocat size to be shorter with the animation to avoid obstacles.
         void Duck()
@@ -145,6 +162,7 @@ namespace Game.Entities
             runAnimation = HelperClasses.EntityAnimations.OctocatRun;
             jumpAnimation = HelperClasses.EntityAnimations.OctocatJump;
             duckAnimation = HelperClasses.EntityAnimations.OctocatDuck;
+            fallAnimation = HelperClasses.EntityAnimations.OctocatFalling;
         }
 
         public override void setAnimation()
@@ -159,6 +177,10 @@ namespace Game.Entities
             {
                 CurrentAnimation = jumpAnimation;
             }
+            else if (!jumping && falling)
+            {
+                CurrentAnimation = fallAnimation;
+            }
             else
             {
                 CurrentAnimation = runAnimation;
@@ -166,7 +188,6 @@ namespace Game.Entities
 
             if (previousAnimation != CurrentAnimation)
             {
-                //Position = new System.Numerics.Vector2((float)(playerPositionX), floor += (int)GetSpriteSize().Height);
                 AnimationIndex = 0;
             }
         }
