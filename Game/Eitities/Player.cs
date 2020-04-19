@@ -14,7 +14,6 @@ namespace Game.Entities
     class Player : Entity
     {
         bool jumping, falling, ducking;
-        int jumpForce = 400, force;
         float userPosY, playerPositionX = 1440 / 8;
         float userVelocityY = 15;
         public List<string> jumpAnimation, duckAnimation, fallAnimation;
@@ -22,13 +21,12 @@ namespace Game.Entities
         public Player() : base()
         {
             LoadAnimations();
-            force = -jumpForce;
 
             jumping = false; falling = false; ducking = false;
 
             userPosY = floor += (int)GetSpriteSize().Height; //677 is the initial size
             //Initial position
-            Position = new System.Numerics.Vector2((float)(playerPositionX), userPosY);
+            Position = new System.Numerics.Vector2(playerPositionX, userPosY);
 
             //Initial velocity
             Velocity = new System.Numerics.Vector2(0, 0);

@@ -12,14 +12,18 @@ namespace Game.Entities
 {
     class Obstacle : Entity
     {
+        float obstaclePosY, obstaclePosX;
+        float obstacleVelocityX;
         public Obstacle() : base()
         {
+            LoadAnimations();
 
         }
 
         public override void Update(WriteableBitmap s)
         {
-            
+            obstaclePosX -= obstacleVelocityX;
+            Draw(s);
         }
 
         public override void Draw(WriteableBitmap surface)

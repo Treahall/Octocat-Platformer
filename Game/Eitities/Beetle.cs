@@ -13,15 +13,39 @@ namespace Game.Entities
 {
     class Beetle : Obstacle
     {
+        float obstaclePosY = 420, obstaclePosX = 1440;
+        float obstacleVelocityX = 5, obstacleVelocityY = 0;
         public Beetle() : base()
         {
+            //Initial position
+            Position = new System.Numerics.Vector2(obstaclePosX, obstaclePosY);
 
+            //Initial velocity
+            Velocity = new System.Numerics.Vector2(obstacleVelocityX, obstacleVelocityY);
         }
-        
+
         public override void Update(WriteableBitmap s)
+        {
+            obstaclePosX -= obstacleVelocityX;
+            Position = new System.Numerics.Vector2(obstaclePosX, obstaclePosY);
+            Draw(s);
+        }
+
+        public override void LoadAnimations()
+        {
+            CurrentAnimation = HelperClasses.EntityAnimations.Beetle;
+        }
+
+        public override void setSpeed()
         {
 
         }
+
+        public override void SetVelocity()
+        {
+
+        }
+
 
 
     }

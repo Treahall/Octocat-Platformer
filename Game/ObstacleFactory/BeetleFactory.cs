@@ -9,14 +9,14 @@ namespace Game.ObstacleFactory
 {
     class BeetleFactory : ObstacleFactory
     {
-        public BeetleFactory()
+        Obstacle beetle;
+        public BeetleFactory(Random r) : base(r)
         {
-
+            beetle = new Beetle();
         }
 
         Obstacle create()
         {
-            Obstacle beetle = new Beetle();
             return beetle;
         }
 
