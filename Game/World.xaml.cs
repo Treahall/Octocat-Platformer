@@ -9,9 +9,11 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Game.HelperClasses;
+using Game.Properties;
 
 namespace Game
 {
@@ -20,47 +22,40 @@ namespace Game
     /// </summary>
     public partial class World : Window
     {
-        double Height, Width;
-        int floor;
+        int floor = (int)BackgroundAssets.Floor.Y;
         WriteableBitmap Screen;
         Frame FrameHandler;
         GameEngine GameEng;
+        BackgroundAnimator WorldBackground;
         
         public World()
         {
             InitializeComponent();
+            Timeline.DesiredFrameRateProperty.OverrideMetadata(
+                typeof(Timeline),
+                new FrameworkPropertyMetadata { DefaultValue = 20 }
+                );
         }
 
         private void LoadScreen (object sender, RoutedEventArgs e)
         {
-            //Get window height and width
-            Height = (double)this.WorldGrid.ActualHeight;
-            Width = (double)this.WorldGrid.ActualWidth;
 
-            //Store as a resource
-            Application.Current.Resources["WorldHeight"] = Height;
-            Application.Current.Resources["WorldWidth"] = Width;
+            //Store the pixel height and width as resources
+            Resources.Add("Height", 877);
+            Resources.Add("Width", 1440);
 
-            Screen = BitmapFactory.New((int)Width, (int)Height);
+            Screen = BitmapFactory.New(Convert.ToInt32(Resources["Width"]), Convert.ToInt32(Resources["Height"]));
             Canvas.Source = Screen;
 
-            //set the value of floor
-            floor = (int)BackgroundAssets.Floor.Y;
+            //initializes the class that controls the background and its animations.
+            WorldBackground = new BackgroundAnimator(Screen);
 
-            //TO DO: Create the background using a bitmap image and a relative link to the .png file
-            //REFERENCE: BitmapImage background = new BitmapImage(new Uri("The .png file path", UriKind.Relative));
-            BitmapImage backgroundImage = new BitmapImage(new Uri(BackgroundAssets.TestBackground, UriKind.Relative));
-
-            //Convert backgroundImage into a WriteableBitmap
-            WriteableBitmap BackgroundBitMap = new WriteableBitmap(backgroundImage);
-
-            //Draw the WriteableBitmap "BackgroundBitMap" onto the Image object "Screen".
-            Screen.Blit(new Point(0,0), BackgroundBitMap, new Rect(new Size(BackgroundBitMap.PixelWidth, BackgroundBitMap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
-
-            GameEng = new GameEngine();
+            //Initializes the object that runs the game.
+            GameEng = new GameEngine(Screen);
 
             //its update function gets added as a composition target upon initializing.
-            FrameHandler = new Frame(GameEng);
+            FrameHandler = new Frame(GameEng, Screen);
+            GameEng.backgroundAnimator = WorldBackground;
         }
     }
 }

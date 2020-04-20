@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Game.Eitities
+namespace Game.Entities
 {
-    class BrokenWindow
+    class BrokenWindow : Obstacle
     {
+
+
     }
 }

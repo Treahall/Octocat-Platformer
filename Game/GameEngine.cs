@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Game.ItemCreatorFile;
 using System.Windows.Media.Imaging;
 using Game.ObstacleFactory;
-using Game.Eitities;
+using Game.Entities;
 using Game.HelperClasses;
 using System.Windows.Input;
 
@@ -15,28 +15,39 @@ namespace Game
    
     class GameEngine
     {
+        WriteableBitmap Screen;
         ItemCreator ItemSpawner = new ItemCreator();
         ObstacleCreator ObstacleSpawner = new ObstacleCreator();
-        BackgroundAnimator BackgorundAnimation = new BackgroundAnimator();
+        public BackgroundAnimator backgroundAnimator;
         int distance;
         Player User = new Player();
-        bool gamestarted = false;
+        bool gamestarted = false, gameOver = false;
         // referencing the world in xaml.cs
         // frame used in world.xaml.cs
-        public void checkStart()
+
+        public GameEngine(WriteableBitmap s)
         {
-            if(!gamestarted)
+            Screen = s;
+        }
+
+        public void checkGameOver()
+        {
+            if(!gameOver)
             {
                 startRunning();
+            }
+            else
+            {
+                //end animations and load game over screen
             }
         }
 
         public void startRunning()
         {
+            backgroundAnimator.Update();
             ObstacleSpawner.StartSpawning();
             ItemSpawner.StartSpawning();
-            BackgorundAnimation.StartAnimation();
-            User.Start();
+            User.Start(Screen);
         }
 
         public void TogglePause()
@@ -44,17 +55,20 @@ namespace Game
 
         }
 
-        public void DeathEvents(WriteableBitmap screen)
+        public void DeathEvents()
         {
 
         }
 
         public void Update()
         {
-            if (Keyboard.IsKeyDown(Key.Enter))
+            backgroundAnimator.StartAnimation();
+            if (Keyboard.IsKeyDown(Key.Enter) || gamestarted)
             {
-                checkStart();
+                gamestarted = true;
+                checkGameOver();
             }
+
         }
     }
 }
