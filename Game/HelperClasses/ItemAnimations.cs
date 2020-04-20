@@ -8,9 +8,9 @@ namespace Game.HelperClasses
 {
     class ItemAnimations
     {
-        public static readonly List<string> Coffee = new List<string>
+        public static readonly List<string> CoffeeCup = new List<string>
         {
-            ""
+            "../../VisualAssets/Items/Coffee Cup.png"
         };
 
         public static readonly List<string> EnergyDrink = new List<string>

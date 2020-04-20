@@ -198,5 +198,8 @@
   <ItemGroup>
     <Resource Include="VisualAssets\Backgrounds\Start Screen.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Items\Coffee Cup.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
