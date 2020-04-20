@@ -14,31 +14,27 @@ namespace Game
 {
     public abstract class Entity
     {
-        public int floor = (int)(BackgroundAssets.Floor.Y);
-
+        public float floor = BackgroundAssets.Floor;
+        
         public int AnimationIndex = 0, speed;
         public int FrameCount = 0, Fpa = 1; //fpa is frames per animation.
-        public double leftbound = 0, rightbound;
 
-        //stores all animations for an entity
+        //stores key animations for an entity
         public List<string> CurrentAnimation = null;
         public List<string> previousAnimation = null;
-        public List<string> runAnimation = null;
 
         public Vector2 Position { get; set; } //Location of game entity. = (X, Y).
         public Vector2 Velocity { get; set; } //Velocity of game entity in pixels/sec. = (Change of X, Change of Y)
 
         public Entity()
-        {
-            setSpeed();
+        { 
         }
 
         public abstract void Update(WriteableBitmap s);
-        public abstract void setSpeed();
-        public abstract void SetVelocity(); //sets the velocity for the next movement.
         public abstract void LoadAnimations();
         public abstract void setAnimation();
 
+        //gets the width and height of the current animation.
         public Size GetSpriteSize()
         {
             if (CurrentAnimation != null)

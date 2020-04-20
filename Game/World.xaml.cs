@@ -22,21 +22,16 @@ namespace Game
     /// </summary>
     public partial class World : Window
     {
-        int floor = (int)BackgroundAssets.Floor.Y;
         WriteableBitmap Screen;
-        Frame FrameHandler;
         GameEngine GameEng;
-        BackgroundAnimator WorldBackground;
         
         public World()
         {
             InitializeComponent();
-            Timeline.DesiredFrameRateProperty.OverrideMetadata(
-                typeof(Timeline),
-                new FrameworkPropertyMetadata { DefaultValue = 20 }
-                );
         }
 
+//=============================================================================================
+        //called once when the world.xaml loads. 
         private void LoadScreen (object sender, RoutedEventArgs e)
         {
 
@@ -47,15 +42,9 @@ namespace Game
             Screen = BitmapFactory.New(Convert.ToInt32(Resources["Width"]), Convert.ToInt32(Resources["Height"]));
             Canvas.Source = Screen;
 
-            //initializes the class that controls the background and its animations.
-            WorldBackground = new BackgroundAnimator(Screen);
-
-            //Initializes the object that runs the game.
+            // Initializes the object that runs the game.
             GameEng = new GameEngine(Screen);
-
-            //its update function gets added as a composition target upon initializing.
-            FrameHandler = new Frame(GameEng, Screen);
-            GameEng.backgroundAnimator = WorldBackground;
+            GameEng.start();
         }
     }
 }
