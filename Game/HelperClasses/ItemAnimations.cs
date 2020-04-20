@@ -20,7 +20,7 @@ namespace Game.HelperClasses
 
         public static readonly List<string> NyanCat = new List<string>
         {
-            ""
+            "../../VisualAssets/Items/Octocat Nyan Cat.png"
         };
 
         public static readonly List<string> Magnet = new List<string>
