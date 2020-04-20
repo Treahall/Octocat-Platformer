@@ -36,17 +36,5 @@ namespace Game.Entities
             CurrentAnimation = HelperClasses.EntityAnimations.Beetle;
         }
 
-        public override void setSpeed()
-        {
-
-        }
-
-        public override void SetVelocity()
-        {
-
-        }
-
-
-
     }
 }

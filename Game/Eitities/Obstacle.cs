@@ -40,17 +40,6 @@ namespace Game.Entities
         {
 
         }
-
-        public override void setSpeed()
-        {
-            
-        }
-
-        public override void SetVelocity()
-        { 
-        
-        }
-
         public void Create()
         {
 

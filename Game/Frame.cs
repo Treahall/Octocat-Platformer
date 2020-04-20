@@ -8,45 +8,61 @@ using System.Windows.Media;
 using Game.HelperClasses;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Windows.Input;
 
 namespace Game
 {
     class Frame
     {
         GameEngine GameEng;
-        List<Entity> Entities;
-        List<Item> Items;
+        public List<Entity> Entities;
+        public List<Item> Items;
         WriteableBitmap Screen;
-        DispatcherTimer timer;
+        public DispatcherTimer timer;
+        public bool paused;
 
-        public Frame(GameEngine g, WriteableBitmap s)
+        public Frame(GameEngine gameEng, WriteableBitmap screen)
         {
             //create timer, set interval, and add update as a function
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(.0333); //.0333 sets 30 FPS
             timer.Tick += Update;
             timer.Start();
-            
-            Screen = s;
-            GameEng = g;
+
+            paused = false;
+            Screen = screen;
+            GameEng = gameEng;
             Entities = new List<Entity>();
             Items = new List<Item>();
         }
 
+        //triggers the update functions of objects.
         private void Update(object sender, EventArgs e)
         {
-            foreach (var entity in Entities)
+            if (paused)
             {
-                entity.Update(Screen);
+                if (Keyboard.IsKeyDown(Key.U))
+                {
+                    paused = false;
+                }
             }
-
-            foreach (var item in Items)
+            else
             {
-                item.Update();
-            }
+                GameEng.Update();
 
+                if (!paused)
+                {
+                    foreach (var entity in Entities)
+                    {
+                        entity.Update(Screen);
+                    }
 
-            GameEng.Update();
+                    foreach (var item in Items)
+                    {
+                        item.Update();
+                    }
+                }
+            }          
         }
     }
 }
