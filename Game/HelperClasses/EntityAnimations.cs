@@ -22,11 +22,17 @@ namespace Game.HelperClasses
         public static readonly List<string> OctocatDuck = new List<string>
         {
             "../../VisualAssets/Entities/Player/Octocat Duck 1.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 1.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 1.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 2.png",
             "../../VisualAssets/Entities/Player/Octocat Duck 2.png",
             "../../VisualAssets/Entities/Player/Octocat Duck 3.png",
             "../../VisualAssets/Entities/Player/Octocat Duck 4.png",
             "../../VisualAssets/Entities/Player/Octocat Duck 3.png",
             "../../VisualAssets/Entities/Player/Octocat Duck 2.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 2.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 1.png",
+            "../../VisualAssets/Entities/Player/Octocat Duck 1.png",
             "../../VisualAssets/Entities/Player/Octocat Duck 1.png"
         };
 
