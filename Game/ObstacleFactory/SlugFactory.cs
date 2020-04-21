@@ -9,15 +9,12 @@ namespace Game.ObstacleFactory
 {
     class SlugFactory : ObstacleFactory
     {
-        Obstacle slug;
-        public SlugFactory(Random r) : base(r)
-        {
-            slug = new Slug();
-        }
+        public SlugFactory(Player U) : base(U) { }
 
-        Obstacle create()
+        //Creates a new Slug
+        public override Obstacle Create()
         {
-            return slug;
+            return new Slug(User);
         }
     }
 }

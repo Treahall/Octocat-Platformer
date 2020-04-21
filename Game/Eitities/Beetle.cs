@@ -7,28 +7,20 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
+using Point = System.Drawing.Point;
 
 
 namespace Game.Entities
 {
     class Beetle : Obstacle
     {
-        float obstaclePosY = 420, obstaclePosX = 1440;
-        float obstacleVelocityX = 5, obstacleVelocityY = 0;
-        public Beetle() : base()
+        public Beetle(Player U) : base(U)
         {
             //Initial position
-            Position = new System.Numerics.Vector2(obstaclePosX, obstaclePosY);
+            Position = new Point(1440, 420); //Magic numbers for start pos.
 
-            //Initial velocity
-            Velocity = new System.Numerics.Vector2(obstacleVelocityX, obstacleVelocityY);
-        }
-
-        public override void Update(WriteableBitmap s)
-        {
-            obstaclePosX -= obstacleVelocityX;
-            Position = new System.Numerics.Vector2(obstaclePosX, obstaclePosY);
-            Draw(s);
+            //Custom Initial velocity?
+            
         }
 
         public override void LoadAnimations()
@@ -36,5 +28,9 @@ namespace Game.Entities
             CurrentAnimation = HelperClasses.EntityAnimations.Beetle;
         }
 
+        public override void CollisionEvents()
+        {
+            User.dead = true;
+        }
     }
 }

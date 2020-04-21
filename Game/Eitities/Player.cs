@@ -10,6 +10,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
 using System.Numerics;
+using Point = System.Drawing.Point;
+using Size = System.Drawing.Size;
 
 namespace Game.Entities
 {
@@ -24,25 +26,23 @@ namespace Game.Entities
     class Player : Entity
     {
         States playerState;
-        public bool dead;
-        float Ypos, Xpos, duckDist = 20;
-        float Yvelocity = 15;
+        int duckDist = 20, playerFloor;
+        Point JumpVelocity = new Point(0, 15); //Magic numbers for jumping
         public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation;
 
         public Player() : base()
         {
             LoadAnimations();
 
-            dead = false; 
             playerState = States.running;
-            //Get the starting X and Y positions
-            Ypos = floor += (float)GetSpriteSize().Height; //floor is 470
-            Xpos = BackgroundAssets.startPos.X;
 
             //Initial position of the player
-            Position = new System.Numerics.Vector2(Xpos, Ypos);
-            //Initial velocity
-            Velocity = new System.Numerics.Vector2(0, 0);
+            Position = EntityAnimations.PlayerStartPos;
+            Position.Y += GetSpriteSize().Height; //Offset Y by the Entity height.
+            playerFloor = Position.Y;
+
+            //Initial velocity X and Y.
+            Velocity = new Point(0, 0);
         }
 
 //=============================================================================================
@@ -52,7 +52,7 @@ namespace Game.Entities
             switch (playerState)
             {
                 case States.running:
-                    RunEvents();
+                    RunningEvents();
                     break;
                 case States.Jumping:
                     JumpEvents();
@@ -66,6 +66,7 @@ namespace Game.Entities
                 default:
                     break;
             }
+            UpdateHitBox();
             Draw(s);
         }
 
@@ -76,7 +77,7 @@ namespace Game.Entities
 
 //=============================================================================================  
         //Checks for arrow keys pressed then jump or duck if correct key is pressed
-        void RunEvents()
+        void RunningEvents()
         {
             setAnimation();
 
@@ -86,9 +87,8 @@ namespace Game.Entities
             }
             else if (Keyboard.IsKeyDown(Key.Down))
             {
-                //Move down
-                Ypos += duckDist;
-                Position = new Vector2(Xpos, Ypos);
+                //Add duckDist to Position.Y to move down
+                Position.Y += duckDist;
                 playerState = States.ducking;
             }
         }
@@ -99,7 +99,7 @@ namespace Game.Entities
             setAnimation();
 
             //reaches top of jump, so start falling.
-            if (Ypos < 420) // jump max
+            if (Position.Y < 420) // jump max (lower Y = higher pos)
             {
                 //user starts falling
                 FallEvents();
@@ -107,8 +107,8 @@ namespace Game.Entities
             }
             else 
             {
-                Ypos -= Yvelocity;
-                Position = new System.Numerics.Vector2(Xpos, Ypos);
+                //Subtract velocity from the position to move up.
+                Position -= (Size)JumpVelocity;
             }
         }
 
@@ -119,32 +119,29 @@ namespace Game.Entities
             setAnimation();
 
             //user lands
-            if (Ypos > floor) //fall max
+            if (Position.Y > playerFloor) //fall max (greater Y = lower pos)
             {
-                Ypos = floor;
-                Position = new System.Numerics.Vector2(Xpos, Ypos);
+                Position.Y = playerFloor;
                 playerState = States.running;
             }
             //user is falling
             else
             {
-                Ypos += Yvelocity;
-                Position = new System.Numerics.Vector2(Xpos, Ypos);
+                //Add jumpvelocity to position to move down
+                Position += (Size)JumpVelocity;
             }
-
         }
 
 //=============================================================================================
-        // TO DO: Change Octocat size to be shorter with the animation to avoid obstacles.
+        //Change Octocat size to be shorter with the animation to avoid obstacles.
         void DuckEvents()
         {
             setAnimation();
 
             if (!Keyboard.IsKeyDown(Key.Down))
             {
-                //Move back up 
-                Ypos -= duckDist;
-                Position = new Vector2(Xpos, Ypos);
+                //Subtract to move back up 
+                Position.Y -= duckDist;
                 playerState = States.running;
             }
         }

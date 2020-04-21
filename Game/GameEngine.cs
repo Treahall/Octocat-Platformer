@@ -21,6 +21,7 @@ namespace Game
         Store
     }
 
+    //Used in the world.xaml.cs with the Screen parameter of the World.xaml.
     class GameEngine
     {
         GameStates GameState;
@@ -31,7 +32,6 @@ namespace Game
         int distance;
         public Frame FrameHandler;
         Player User;
-        // referenced in the world.xaml.cs with the Screen parameter of the World.xaml.
 
         public GameEngine(WriteableBitmap screen)
         {
@@ -39,12 +39,12 @@ namespace Game
             Screen = screen;
             GameState = GameStates.MainMenu;
             distance = 0;
-
-            //Initialize all objects
-            ItemSpawner = new ItemCreator();
-            ObstacleSpawner = new ObstacleCreator();
-            backgroundAnimator = new BackgroundAnimator(screen);
+            //Initialize objects
             User = new Player();
+            ItemSpawner = new ItemCreator();
+            ObstacleSpawner = new ObstacleCreator(User);
+            backgroundAnimator = new BackgroundAnimator(screen);
+            
         }
 //=============================================================================================
         //loads the start screen and initializes the frame handler
@@ -58,7 +58,7 @@ namespace Game
         //Keeps track of event triggers for in game play.
         public void RunningEvents()
         {
-            //if pressing p then pause
+            //if pressing p then trigger pause.
             if (Keyboard.IsKeyDown(Key.P))
             {
                 FrameHandler.paused = true;
@@ -76,17 +76,13 @@ namespace Game
                 
                 //TO DO: update the distance and other graphics
                 backgroundAnimator.LoadAll();
-            }
-            
+            } 
         }
 
         void calculateDistance()
         {
 
         }
-
-//=============================================================================================
-
 
 //=============================================================================================
         //Keeps track of event triggers for the game over menu.
@@ -110,9 +106,10 @@ namespace Game
             {
                 backgroundAnimator.ChangeBackground(BackgroundAssets.Running_Background);
                 FrameHandler.Entities.Add(User);
+                //DELETE WHEN
+                FrameHandler.Entities.Add(new Slug(User));
+                //DONE TESTING
                 GameState = GameStates.GameRunning;
-                ObstacleSpawner.StartSpawning();
-                ItemSpawner.StartSpawning();
             }
             //go to the highscores menu
             else if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))

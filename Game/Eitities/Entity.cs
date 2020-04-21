@@ -9,60 +9,69 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
 using Game.HelperClasses;
+using System.Drawing;
+using Size = System.Drawing.Size;
+using Point = System.Drawing.Point;
 
 namespace Game
 {
     public abstract class Entity
     {
-        public float floor = BackgroundAssets.Floor;
-        
-        public int AnimationIndex = 0, speed;
-        public int FrameCount = 0, Fpa = 1; //fpa is frames per animation.
+        public Rectangle HitBox;
+        public int AnimationIndex = 0;
+        public bool dead;
 
-        //stores key animations for an entity
+        //stores important animations for an entity
         public List<string> CurrentAnimation = null;
         public List<string> previousAnimation = null;
 
-        public Vector2 Position { get; set; } //Location of game entity. = (X, Y).
-        public Vector2 Velocity { get; set; } //Velocity of game entity in pixels/sec. = (Change of X, Change of Y)
+        //Used to calculate and store values for movement
+        protected Point Position; //Location of game entity. = (X, Y).
+        protected Point Velocity; //Velocity of game entity in pixels/frame = (Change of X, Change of Y)
 
         public Entity()
-        { 
+        {
+            dead = false;
         }
 
         public abstract void Update(WriteableBitmap s);
         public abstract void LoadAnimations();
         public abstract void setAnimation();
 
+//=============================================================================================
+        //Uses rectangles to represent the space an entity takes up.
+        public void UpdateHitBox()
+        {
+            HitBox = new Rectangle(Position, GetSpriteSize());
+        }
+
         //gets the width and height of the current animation.
         public Size GetSpriteSize()
         {
             if (CurrentAnimation != null)
             {
-                return new Size((double)new BitmapImage(new Uri(CurrentAnimation[AnimationIndex], UriKind.Relative)).PixelWidth,
-                    (double)new BitmapImage(new Uri(CurrentAnimation[AnimationIndex], UriKind.Relative)).PixelHeight);
+                BitmapImage Img = new BitmapImage(new Uri(CurrentAnimation[AnimationIndex], UriKind.Relative));
+                return new Size(Img.PixelWidth, Img.PixelHeight);
             }
             else return new Size(0, 0);
         }
 
+//=============================================================================================
+        
         public virtual void Draw(WriteableBitmap surface)
         {
+
+            //Create bitmap from an image source.
             BitmapImage img = new BitmapImage(new Uri(CurrentAnimation[AnimationIndex], UriKind.Relative));
-            WriteableBitmap BackgroundBitMap = new WriteableBitmap(img);
+            WriteableBitmap EntityBitMap = new WriteableBitmap(img);
 
-            //merge image onto screen
-            surface.Blit(new Point(Position.X, Position.Y), BackgroundBitMap, new Rect(new Size(BackgroundBitMap.PixelWidth, BackgroundBitMap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
+            //Merge image onto screen. Blit uses System.Windows for Point and Size.
+            surface.Blit(new System.Windows.Point(Position.X, Position.Y), EntityBitMap, 
+                new Rect(new System.Windows.Size(EntityBitMap.PixelWidth, EntityBitMap.PixelHeight)), 
+                Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
 
-
-            //resets animation index to 0 if animation index + 1 is out of bounds
-            if (AnimationIndex >= CurrentAnimation.Count - 1)
-                AnimationIndex = 0;
-            //Increments animation index by 1 when FrameCount is less then fpa
-            else if ((FrameCount += 1) > Fpa)
-            {
-                AnimationIndex += 1;
-                FrameCount = 0;
-            }
+            //Next animationIndex
+            AnimationIndex = (AnimationIndex + 1) % CurrentAnimation.Count;
         }
     }
 }

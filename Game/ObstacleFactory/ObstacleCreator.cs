@@ -9,42 +9,57 @@ using System.Windows.Threading;
 
 namespace Game.ObstacleFactory
 {
+    enum OTypes
+    {
+        Slug,
+        Beetle,
+        BrokenWindow
+    }
     class ObstacleCreator
     {
-        Dictionary<Obstacle, ObstacleFactory> obstacleCreator;
-        ObstacleFactory obstacleFactory;
+        Player User;
+        OTypes Type;
+        ObstacleFactory OFactory;
         Random rand;
-        DispatcherTimer timer;
 
-        public ObstacleCreator()
+        public ObstacleCreator(Player U)
         {
-            obstacleCreator = new Dictionary<Obstacle, ObstacleFactory>();
             rand = new Random();
-            timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(.0333); //.0333 sets 30 FPS
-            timer.Start();
-        }
-        Obstacle Create(Obstacle s)
-        {
-            return s;
-        }
+            User = U;
 
-        Obstacle CreateRandom()
-        {
-            obstacleFactory = new ObstacleFactory(rand);
-            Obstacle randObstacle = obstacleFactory.create();
-            if(randObstacle != null)
-                obstacleCreator.Add(randObstacle, obstacleFactory);
-
-            return randObstacle;
+            //Gives a value to avoid null errors.
+            OFactory = new SlugFactory(U);
         }
-        
-        public void StartSpawning()
+//=============================================================================================
+        //Returns the obstacle that corresponds with T.
+        Obstacle Create(OTypes T)
         {
-            if (timer.Interval.TotalSeconds % 3 > 1 && timer.Interval.TotalSeconds % 3 < 2) // hmmmm
+            switch (T)
             {
-                CreateRandom();
+                case OTypes.Slug:
+                    OFactory = new SlugFactory(User);
+                    break;
+                case OTypes.Beetle:
+                    OFactory = new BeetleFactory(User);
+                    break;
+                case OTypes.BrokenWindow:
+                    OFactory = new WindowFactory(User);
+                    break;
+                default:
+                    break;
             }
+            return OFactory.Create();
+        }
+
+        //Feeds a random OType to Create() resulting in a random obstacle.
+        Obstacle getRandom()
+        {
+            //gets a random number in range of the enum OTypes.
+            int num = rand.Next(Enum.GetNames(typeof(OTypes)).Length);
+            Type = (OTypes)num;
+
+            //returns the object needed
+            return Create(Type);
         }
     }
 }

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,9 +53,6 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="WriteableBitmapEx.Wpf, Version=1.6.5.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WriteableBitmapEx.1.6.5\lib\net40\WriteableBitmapEx.Wpf.dll</HintPath>
-    </Reference>
-    <Reference Include="XamlAnimatedGif, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XamlAnimatedGif.1.2.2\lib\net45\XamlAnimatedGif.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

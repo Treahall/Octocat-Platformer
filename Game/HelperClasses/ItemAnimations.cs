@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 namespace Game.HelperClasses
 {
     class ItemAnimations
+
+        //FIXME: REFERENCE PATHS INSTEAD USE RESOURCES THROU VS
+        //COULD BITE IN ASSSS.......?
     {
         public static readonly List<string> CoffeeCup = new List<string>
         {

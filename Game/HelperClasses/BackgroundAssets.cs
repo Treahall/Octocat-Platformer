@@ -5,6 +5,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using Point = System.Drawing.Point;
 
 namespace Game.HelperClasses
 {
@@ -32,9 +33,7 @@ namespace Game.HelperClasses
             ""
         };
 
-        //The Y axis value of the floor
-        public static float Floor = 470;
-        public static Vector2 startPos = new Vector2(1440/8, Floor);
+        
 
 
     }
