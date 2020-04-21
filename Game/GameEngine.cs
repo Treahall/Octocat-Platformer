@@ -12,63 +12,162 @@ using System.Windows.Input;
 
 namespace Game
 {
-   
+    enum GameStates
+    {
+        MainMenu,
+        GameRunning,
+        GameOver,
+        Store
+    }
+
+    enum levels
+    {
+        one = 5000,
+        two = 10000,
+        three = 20000, 
+        four = 40000
+    }
+
+
+    //Used in the world.xaml.cs with the Screen parameter of the World.xaml.
     class GameEngine
     {
+        GameStates GameState;
         WriteableBitmap Screen;
-        ItemCreator ItemSpawner = new ItemCreator();
-        ObstacleCreator ObstacleSpawner = new ObstacleCreator();
+        ItemCreator ItemSpawner;
+        ObstacleCreator ObstacleSpawner;
         public BackgroundAnimator backgroundAnimator;
         int distance;
-        Player User = new Player();
-        bool gamestarted = false, gameOver = false;
-        // referencing the world in xaml.cs
-        // frame used in world.xaml.cs
+        public Frame FrameHandler;
+        Player User;
 
-        public GameEngine(WriteableBitmap s)
+        //Constructor
+        public GameEngine(WriteableBitmap screen)
         {
-            Screen = s;
+            //set values for objects.
+            Screen = screen;
+            GameState = GameStates.MainMenu;
+            distance = 0;
+            //Initialize objects
+            User = new Player();
+            ItemSpawner = new ItemCreator();
+            ObstacleSpawner = new ObstacleCreator(User);
+            backgroundAnimator = new BackgroundAnimator(screen);
+            
         }
-
-        public void checkGameOver()
+//=============================================================================================
+        //loads the start screen and initializes the frame handler
+        public void start()
         {
-            if(!gameOver)
+            backgroundAnimator.LoadBackground();
+            FrameHandler = new Frame(this, Screen);
+        }
+        
+//=============================================================================================
+        //Keeps track of event triggers for in game play.
+        public void RunningEvents()
+        {
+            //if pressing p then trigger pause.
+            if (Keyboard.IsKeyDown(Key.P))
             {
-                startRunning();
+                FrameHandler.paused = true;
+                return;
             }
+            //When not paused
             else
             {
-                //end animations and load game over screen
+                //if the user dies trigger a game over
+                if (User.dead == true)
+                {
+                    FrameHandler.Entities.Clear();
+                    FrameHandler.Items.Clear();
+                    //backgroundAnimator.ChangeBackground(BackgroundAssets.GameOver)
+                    //backgroundAnimator.LoadBackground();
+                    GameState = GameStates.GameOver;
+                }
+
+                //TO DO: update the distance and other graphics
+                UpdateDistance();
+                backgroundAnimator.LoadAll();
+            } 
+        }
+
+        void UpdateDistance()
+        {
+
+        }
+
+        void SpawnItems()
+        {
+
+        }
+
+        int spawninterval = 0;
+        void SpawnObstacles()
+        {
+
+        }
+
+//=============================================================================================
+        //Keeps track of event triggers for the game over menu.
+        public void GameOverEvents()
+        {
+            //return to the start screen
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                User.dead = false;
+                backgroundAnimator.ChangeBackground(BackgroundAssets.Start_Screen);
+                backgroundAnimator.LoadBackground();
+                GameState = GameStates.MainMenu;
+            }
+            //enter a highscore.
+
+        }
+//=============================================================================================
+        //Keeps track of event triggers for the main menu.
+        public void MenuEvents()
+        {
+            //Add the user to FrameHandler and start running the game.
+            if (Keyboard.IsKeyDown(Key.Enter))
+            {
+                backgroundAnimator.ChangeBackground(BackgroundAssets.Running_Background);
+                FrameHandler.Entities.Add(User);
+                //DELETE WHEN
+                FrameHandler.Entities.Add(new Slug(User));
+                //DONE TESTING
+                GameState = GameStates.GameRunning;
+            }
+            //go to the highscores menu
+            else if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            {
+
+            }
+            //go to the store
+            else if (Keyboard.IsKeyDown(Key.Tab))
+            {
+
             }
         }
-
-        public void startRunning()
-        {
-            backgroundAnimator.Update();
-            ObstacleSpawner.StartSpawning();
-            ItemSpawner.StartSpawning();
-            User.Start(Screen);
-        }
-
-        public void TogglePause()
-        {
-
-        }
-
-        public void DeathEvents()
-        {
-
-        }
-
+//=============================================================================================
+        //Triggers events based on the state of the game.
         public void Update()
         {
-            backgroundAnimator.StartAnimation();
-            if (Keyboard.IsKeyDown(Key.Enter) || gamestarted)
+            switch (GameState)
             {
-                gamestarted = true;
-                checkGameOver();
+                case GameStates.MainMenu:
+                    MenuEvents();
+                    break;
+                case GameStates.GameRunning:
+                    RunningEvents();
+                    break;
+                case GameStates.GameOver:
+                    GameOverEvents();
+                    break;
+                case GameStates.Store:
+                    break;
+                default:
+                    break;
             }
-
         }
     }
 }

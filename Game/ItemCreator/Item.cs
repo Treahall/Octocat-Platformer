@@ -8,9 +8,10 @@ namespace Game.ItemCreatorFile
 {
     class Item
     {
+        public bool PickedUp;
         public void Update()
         {
-
+            PickedUp = false;
         }
     }
 }

@@ -5,98 +5,68 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using Game.HelperClasses;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
+using System.Numerics;
+using Point = System.Drawing.Point;
+using Size = System.Drawing.Size;
 
 namespace Game.Entities
 {
+
+    enum States
+    {
+        running,
+        Jumping,
+        falling, 
+        ducking
+    }
     class Player : Entity
     {
-        bool jumping, falling, ducking;
-        float userPosY, playerPositionX = 1440 / 8;
-        float userVelocityY = 15;
-        public List<string> jumpAnimation, duckAnimation, fallAnimation;
+        States playerState;
+        int duckDist = 20, playerFloor;
+        Point JumpVelocity = new Point(0, 15); //Magic numbers for jumping
+        public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation;
 
         public Player() : base()
         {
             LoadAnimations();
 
-            jumping = false; falling = false; ducking = false;
+            playerState = States.running;
 
-            userPosY = floor += (int)GetSpriteSize().Height; //677 is the initial size
-            //Initial position
-            Position = new System.Numerics.Vector2(playerPositionX, userPosY);
+            //Initial position of the player
+            Position = EntityAnimations.PlayerStartPos;
+            Position.Y -= GetSpriteSize().Height; //Offset Y by the Entity height.
+            playerFloor = Position.Y;
 
-            //Initial velocity
-            Velocity = new System.Numerics.Vector2(0, 0);
+            //Initial velocity X and Y.
+            Velocity = new Point(0, 0);
         }
 
-        //Starts the running animation and allows you to control player with arrow keys
-        public void Start(WriteableBitmap s)
-        {
-            setAnimation();
-
-            if (falling)
-            {
-                Fall();
-            }
-            else if (jumping)
-            {
-                Jump();
-            }
-            else if (Keyboard.IsKeyDown(Key.Up))
-            {
-                Jump();
-            }
-            else if (Keyboard.IsKeyDown(Key.Down))
-            {
-                Duck();
-                ducking = false;
-            }
-            else
-            {
-                CurrentAnimation = runAnimation;
-            }
-            Draw(s);
-        }
-
-        // TO DO: needed??
-        public override void setSpeed()
-        {
-            //speed = 0;
-        }
-
-        // TO DO: needed??
-        public override void SetVelocity()
-        {
-
-        }
-
-        //Checks for arrow keys pressed then jump or duck if correct key is pressed
+//=============================================================================================
+        //triggers events based on the players state.
         public override void Update(WriteableBitmap s)
         {
-            if (falling)
+            switch (playerState)
             {
-                Fall();
+                case States.running:
+                    RunningEvents();
+                    break;
+                case States.Jumping:
+                    JumpEvents();
+                    break;
+                case States.falling:
+                    FallEvents();
+                    break;
+                case States.ducking:
+                    DuckEvents();
+                    break;
+                default:
+                    break;
             }
-            else if (jumping)
-            {
-                Jump();
-            }
-            else if (Keyboard.IsKeyDown(Key.Up))
-            {
-                Jump();
-            }
-            else if (Keyboard.IsKeyDown(Key.Down))
-            {
-                Duck();
-                ducking = false;
-            }
-            else
-            {
-                CurrentAnimation = runAnimation;
-            }
+            UpdateHitBox();
             Draw(s);
         }
 
@@ -104,56 +74,80 @@ namespace Game.Entities
         {
             base.Draw(surface);
         }
-        
-        //Should move the player up in a straight line. 
-        void Jump()
+
+//=============================================================================================  
+        //Checks for arrow keys pressed then jump or duck if correct key is pressed
+        void RunningEvents()
         {
-            jumping = true;
             setAnimation();
 
-            
-            if (userPosY < 420) // jump max
+            if (Keyboard.IsKeyDown(Key.Up))
+            {
+                playerState = States.Jumping;
+            }
+            else if (Keyboard.IsKeyDown(Key.Down))
+            {
+                //Add duckDist to Position.Y to move down
+                Position.Y += duckDist;
+                playerState = States.ducking;
+            }
+        }
+//=============================================================================================
+        //Should move the player up in a straight line. 
+        void JumpEvents()
+        {
+            setAnimation();
+
+            //reaches top of jump, so start falling.
+            if (Position.Y < 420) // jump max (lower Y = higher pos)
             {
                 //user starts falling
-                Fall();
-                jumping = false;
-                falling = true;
+                FallEvents();
+                playerState = States.falling;
             }
             else 
             {
-                userPosY -= userVelocityY;
-                Position = new System.Numerics.Vector2(playerPositionX, userPosY);
+                //Subtract velocity from the position to move up.
+                Position -= (Size)JumpVelocity;
             }
         }
 
+//=============================================================================================
         //Should move the player down in a straight line.
-        void Fall()
+        void FallEvents()
         {
             setAnimation();
 
-            if (userPosY > 677) //fall max
+            //user lands
+            if (Position.Y > playerFloor) //fall max (greater Y = lower pos)
             {
-                //user lands
-                userPosY = 677;
-                Position = new System.Numerics.Vector2(playerPositionX, userPosY);
-                falling = false;
+                Position.Y = playerFloor;
+                playerState = States.running;
             }
+            //user is falling
             else
             {
-                userPosY += userVelocityY;
-                Position = new System.Numerics.Vector2(playerPositionX, userPosY);
+                //Add jumpvelocity to position to move down
+                Position += (Size)JumpVelocity;
             }
-
         }
 
-
-        // TO DO: Change Octocat size to be shorter with the animation to avoid obstacles.
-        void Duck()
+//=============================================================================================
+        //Change Octocat size to be shorter with the animation to avoid obstacles.
+        void DuckEvents()
         {
-            ducking = true;
             setAnimation();
+
+            if (!Keyboard.IsKeyDown(Key.Down))
+            {
+                //Subtract to move back up 
+                Position.Y -= duckDist;
+                playerState = States.running;
+            }
         }
 
+//=============================================================================================
+        //loads in the string lists for the animation assets
         public override void LoadAnimations()
         {
             CurrentAnimation = HelperClasses.EntityAnimations.OctocatRun;
@@ -163,27 +157,33 @@ namespace Game.Entities
             fallAnimation = HelperClasses.EntityAnimations.OctocatFalling;
         }
 
+//=============================================================================================
+        //sets the animation based on current state
         public override void setAnimation()
         {
+            //stores current animation.
             previousAnimation = CurrentAnimation;
 
-            if (ducking)
+            //updates the animation based on state
+            switch (playerState)
             {
-                CurrentAnimation = duckAnimation;
-            }
-            else if (jumping && !falling)
-            {
-                CurrentAnimation = jumpAnimation;
-            }
-            else if (!jumping && falling)
-            {
-                CurrentAnimation = fallAnimation;
-            }
-            else
-            {
-                CurrentAnimation = runAnimation;
+                case States.running:
+                    CurrentAnimation = runAnimation;
+                    break;
+                case States.Jumping:
+                    CurrentAnimation = jumpAnimation;
+                    break;
+                case States.falling:
+                    CurrentAnimation = fallAnimation;
+                    break;
+                case States.ducking:
+                    CurrentAnimation = duckAnimation;
+                    break;
+                default:
+                    break;
             }
 
+            //If the animation was changed then reset the AnimationIndex
             if (previousAnimation != CurrentAnimation)
             {
                 AnimationIndex = 0;

@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace Game.HelperClasses
 {
     class ItemAnimations
+
+        //FIXME: REFERENCE PATHS INSTEAD USE RESOURCES THROU VS
+        //COULD BITE IN ASSSS.......?
     {
-        public static readonly List<string> Coffee = new List<string>
+        public static readonly List<string> CoffeeCup = new List<string>
         {
-            ""
+            "../../VisualAssets/Items/Coffee Cup.png"
         };
 
         public static readonly List<string> EnergyDrink = new List<string>
@@ -20,7 +23,7 @@ namespace Game.HelperClasses
 
         public static readonly List<string> NyanCat = new List<string>
         {
-            ""
+            "../../VisualAssets/Items/Octocat Nyan Cat.png"
         };
 
         public static readonly List<string> Magnet = new List<string>

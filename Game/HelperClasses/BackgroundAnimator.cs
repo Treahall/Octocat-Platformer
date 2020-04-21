@@ -19,23 +19,17 @@ namespace Game.HelperClasses
         public BackgroundAnimator(WriteableBitmap s)
         {
             this.Screen = s;
-        }
-
-        public void StartAnimation()
-        {
             currentBackground = BackgroundAssets.Start_Screen;
-            LoadBackground();
         }
 
-        public void Update()
+        public void LoadAll()
         {
-            currentBackground = BackgroundAssets.Blank_Background;
             LoadBackground();
-            MoveClouds();
-            MoveForeground();
+            LoadClouds();
+            LoadForeground();
         }
 
-        public void MoveClouds()
+        public void LoadClouds()
         {
             if(cloudPos < -1440)
             {
@@ -54,7 +48,7 @@ namespace Game.HelperClasses
             Screen.Blit(new Point(cloudPos, 0), BackgroundBitMap, new Rect(new Size(BackgroundBitMap.PixelWidth, BackgroundBitMap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
         }
 
-        public void MoveForeground()
+        public void LoadForeground()
         {
             if (foregroundPos < -1440)
             {
@@ -84,9 +78,9 @@ namespace Game.HelperClasses
             Screen.Blit(new Point(0, 0), BackgroundBitMap, new Rect(new Size(BackgroundBitMap.PixelWidth, BackgroundBitMap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
         }
 
-        public void ChangeBackground(int distance)
+        public void ChangeBackground(string background)
         {
-
+            currentBackground = background;
         }
     }
 }

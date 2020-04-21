@@ -8,45 +8,93 @@ using System.Windows.Media;
 using Game.HelperClasses;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.Windows.Input;
 
 namespace Game
 {
     class Frame
     {
         GameEngine GameEng;
-        List<Entity> Entities;
-        List<Item> Items;
+        public List<Entity> Entities;
+        public List<Item> Items;
         WriteableBitmap Screen;
-        DispatcherTimer timer;
+        public DispatcherTimer timer;
+        public bool paused;
 
-        public Frame(GameEngine g, WriteableBitmap s)
+        public Frame(GameEngine gameEng, WriteableBitmap screen)
         {
             //create timer, set interval, and add update as a function
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(.0333); //.0333 sets 30 FPS
             timer.Tick += Update;
             timer.Start();
-            
-            Screen = s;
-            GameEng = g;
+
+            paused = false;
+            Screen = screen;
+            GameEng = gameEng;
             Entities = new List<Entity>();
             Items = new List<Item>();
         }
 
+//=============================================================================================
+        //triggers the update functions of objects and enforces pausing.
         private void Update(object sender, EventArgs e)
         {
+            //if paused then wait until unpaused
+            if (paused)
+            {
+                if (Keyboard.IsKeyDown(Key.U))
+                {
+                    paused = false;
+                }
+            }
+
+            else
+            {
+                RemoveDeadAndPickedUp();
+                GameEng.Update();
+                //Update if not paused during previous GameEng.update()
+                if (!paused)
+                {
+                    foreach (var entity in Entities)
+                    {
+                        entity.Update(Screen);
+                    }
+
+                    foreach (var item in Items)
+                    {
+                        item.Update();
+                    }
+                }
+            }          
+        }
+
+        private void RemoveDeadAndPickedUp()
+        {
+            List<Entity> EToRemove = new List<Entity>();
+            List<Item> IToRemove = new List<Item>();
+
+            //get lists of what to remove.
             foreach (var entity in Entities)
             {
-                entity.Update(Screen);
+                if (entity.dead)
+                    EToRemove.Add(entity);
             }
-
             foreach (var item in Items)
             {
-                item.Update();
+                if (item.PickedUp)
+                    IToRemove.Add(item);
             }
 
-
-            GameEng.Update();
+            //Remove them
+            foreach (var e in EToRemove)
+            {
+                Entities.Remove(e);
+            }
+            foreach (var i in IToRemove)
+            {
+                Items.Remove(i);
+            }
         }
     }
 }

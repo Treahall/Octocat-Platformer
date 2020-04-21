@@ -8,32 +8,17 @@ using System.Windows.Threading;
 
 namespace Game.ObstacleFactory
 {
-    class ObstacleFactory
+    abstract class ObstacleFactory
     {
-        Obstacle obstacle;
-        public ObstacleFactory(Random r)
-        {
-            int rand = r.Next();
-            /*if (rand % 3 == 2)
-            {*/
-                BeetleFactory beetleFactory = new BeetleFactory(r);
-                obstacle = beetleFactory.create();
-            /*}
-            else if (rand % 3 == 1)
-            {
-                SlugFactory slugFactory = new SlugFactory(r);
-                obstacle = slugFactory.create();
-            }
-            else
-            {
-                WindowFactory windowFactory = new WindowFactory(r);
-                obstacle = windowFactory.create();
-            }*/
-        }
+        //Used for collision events with the user.
+        protected Player User;
 
-        public Obstacle create()
+        //Enforces the parameter that is stored into user.
+        public ObstacleFactory(Player U)
         {
-            return obstacle;
+            User = U;
         }
+        //Subclasses create specified obstacle.
+        public abstract Obstacle Create();
     }
 }
