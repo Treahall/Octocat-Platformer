@@ -10,7 +10,7 @@ namespace Game.HelperClasses
     class EntityAnimations
     {
         //The Y axis value of the floor.
-        public static int Floor = 470;
+        public static int Floor = 777;
         public static Point PlayerStartPos = new Point(180, Floor);
 
         public static readonly List<string> OctocatJump = new List<string>

@@ -17,12 +17,22 @@ namespace Game.Entities
     abstract class Obstacle : Entity
     {
         public Player User;
+        int Speed;
 
         public Obstacle(Player U) : base()
         {
+            Speed = 15;
             User = U;
             LoadAnimations();
-            Velocity = new Point(-15, 0); //Magic value for velocity.
+            Velocity = new Point(-Speed, 0); //Magic value for velocity.
+        }
+
+        public Obstacle(Player U, int speed) : base()
+        {
+            Speed = speed;
+            User = U;
+            LoadAnimations();
+            Velocity = new Point(-Speed, 0); //Magic value for velocity.
         }
 
 //=============================================================================================

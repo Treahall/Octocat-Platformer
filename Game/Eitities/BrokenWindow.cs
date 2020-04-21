@@ -13,7 +13,7 @@ namespace Game.Entities
         public BrokenWindow(Player U) : base(U)
         {
             //Initial position
-            Position = new Point(1440, EntityAnimations.Floor + GetSpriteSize().Height); //Magic numbers for start pos.
+            Position = new Point(1440, EntityAnimations.Floor - GetSpriteSize().Height); //Magic numbers for start pos.
         }
 
         public override void LoadAnimations()

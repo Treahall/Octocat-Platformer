@@ -38,7 +38,7 @@ namespace Game.Entities
 
             //Initial position of the player
             Position = EntityAnimations.PlayerStartPos;
-            Position.Y += GetSpriteSize().Height; //Offset Y by the Entity height.
+            Position.Y -= GetSpriteSize().Height; //Offset Y by the Entity height.
             playerFloor = Position.Y;
 
             //Initial velocity X and Y.

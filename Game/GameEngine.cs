@@ -12,7 +12,6 @@ using System.Windows.Input;
 
 namespace Game
 {
-
     enum GameStates
     {
         MainMenu,
@@ -20,6 +19,15 @@ namespace Game
         GameOver,
         Store
     }
+
+    enum levels
+    {
+        one = 5000,
+        two = 10000,
+        three = 20000, 
+        four = 40000
+    }
+
 
     //Used in the world.xaml.cs with the Screen parameter of the World.xaml.
     class GameEngine
@@ -33,6 +41,7 @@ namespace Game
         public Frame FrameHandler;
         Player User;
 
+        //Constructor
         public GameEngine(WriteableBitmap screen)
         {
             //set values for objects.
@@ -64,22 +73,37 @@ namespace Game
                 FrameHandler.paused = true;
                 return;
             }
-            
+            //When not paused
             else
             {
                 //if the user dies trigger a game over
                 if (User.dead == true)
                 {
-                    FrameHandler.Entities.Remove(User);
+                    FrameHandler.Entities.Clear();
+                    FrameHandler.Items.Clear();
+                    //backgroundAnimator.ChangeBackground(BackgroundAssets.GameOver)
+                    //backgroundAnimator.LoadBackground();
                     GameState = GameStates.GameOver;
                 }
-                
+
                 //TO DO: update the distance and other graphics
+                UpdateDistance();
                 backgroundAnimator.LoadAll();
             } 
         }
 
-        void calculateDistance()
+        void UpdateDistance()
+        {
+
+        }
+
+        void SpawnItems()
+        {
+
+        }
+
+        int spawninterval = 0;
+        void SpawnObstacles()
         {
 
         }
@@ -89,9 +113,11 @@ namespace Game
         public void GameOverEvents()
         {
             //return to the start screen
-            if (Keyboard.IsKeyDown(Key.Enter))
+            if (Keyboard.IsKeyDown(Key.Space))
             {
+                User.dead = false;
                 backgroundAnimator.ChangeBackground(BackgroundAssets.Start_Screen);
+                backgroundAnimator.LoadBackground();
                 GameState = GameStates.MainMenu;
             }
             //enter a highscore.
