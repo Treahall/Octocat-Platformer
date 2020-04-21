@@ -20,7 +20,8 @@ namespace Game
         Store
     }
 
-    enum levels
+    //levels based on minimum distance 
+    enum Levels
     {
         one = 5000,
         two = 10000,
@@ -28,10 +29,18 @@ namespace Game
         four = 40000
     }
 
+    enum Speeds
+    {
+        one = 15,
+        two = 30,
+        three = 45,
+        four = 60
+    }
 
     //Used in the world.xaml.cs with the Screen parameter of the World.xaml.
     class GameEngine
     {
+        Levels level; Speeds speed;
         GameStates GameState;
         WriteableBitmap Screen;
         ItemCreator ItemSpawner;
@@ -48,10 +57,12 @@ namespace Game
             Screen = screen;
             GameState = GameStates.MainMenu;
             distance = 0;
+            level = Levels.one;
+            speed = Speeds.one;
             //Initialize objects
             User = new Player();
             ItemSpawner = new ItemCreator();
-            ObstacleSpawner = new ObstacleCreator(User);
+            ObstacleSpawner = new ObstacleCreator(User, (int)speed);
             backgroundAnimator = new BackgroundAnimator(screen);
             
         }
@@ -88,13 +99,15 @@ namespace Game
 
                 //TO DO: update the distance and other graphics
                 UpdateDistance();
+                SpawnObstacles();
                 backgroundAnimator.LoadAll();
             } 
         }
 
         void UpdateDistance()
         {
-
+            distance += (int)speed;
+            Interval += (int)speed;
         }
 
         void SpawnItems()
@@ -102,10 +115,15 @@ namespace Game
 
         }
 
-        int spawninterval = 0;
+        int spawnInterval = 500;
+        int Interval = 0;
         void SpawnObstacles()
         {
-
+            if (Interval >= spawnInterval)
+            {
+                Interval = 0;
+                FrameHandler.Entities.Add(ObstacleSpawner.getRandom());
+            }
         }
 
 //=============================================================================================
@@ -132,9 +150,6 @@ namespace Game
             {
                 backgroundAnimator.ChangeBackground(BackgroundAssets.Running_Background);
                 FrameHandler.Entities.Add(User);
-                //DELETE WHEN
-                FrameHandler.Entities.Add(new Slug(User));
-                //DONE TESTING
                 GameState = GameStates.GameRunning;
             }
             //go to the highscores menu

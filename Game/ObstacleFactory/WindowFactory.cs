@@ -9,12 +9,12 @@ namespace Game.ObstacleFactory
 {
     class WindowFactory : ObstacleFactory
     {
-        public WindowFactory(Player U) : base(U) { }
+        public WindowFactory(Player U, int speed) : base(U, speed) { }
 
         //Create a new BrokenWindow
         public override Obstacle Create()
         {
-            return new BrokenWindow(User);
+            return new BrokenWindow(User, Speed);
         }
     }
 }

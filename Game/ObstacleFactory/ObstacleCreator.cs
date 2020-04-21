@@ -21,14 +21,16 @@ namespace Game.ObstacleFactory
         OTypes Type;
         ObstacleFactory OFactory;
         Random rand;
+        public int Speed;
 
-        public ObstacleCreator(Player U)
+        public ObstacleCreator(Player U, int speed)
         {
             rand = new Random();
             User = U;
+            Speed = speed;
 
             //Gives a value to avoid null errors.
-            OFactory = new SlugFactory(U);
+            OFactory = new SlugFactory(U, speed);
         }
 //=============================================================================================
         //Returns the obstacle that corresponds with T.
@@ -37,13 +39,13 @@ namespace Game.ObstacleFactory
             switch (T)
             {
                 case OTypes.Slug:
-                    OFactory = new SlugFactory(User);
+                    OFactory = new SlugFactory(User, Speed);
                     break;
                 case OTypes.Beetle:
-                    OFactory = new BeetleFactory(User);
+                    OFactory = new BeetleFactory(User, Speed);
                     break;
                 case OTypes.BrokenWindow:
-                    OFactory = new WindowFactory(User);
+                    OFactory = new WindowFactory(User, Speed);
                     break;
                 default:
                     break;
@@ -52,7 +54,7 @@ namespace Game.ObstacleFactory
         }
 
         //Feeds a random OType to Create() resulting in a random obstacle.
-        Obstacle getRandom()
+        public Obstacle getRandom()
         {
             //gets a random number in range of the enum OTypes.
             int num = rand.Next(Enum.GetNames(typeof(OTypes)).Length);

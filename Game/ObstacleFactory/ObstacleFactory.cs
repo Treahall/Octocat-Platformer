@@ -12,11 +12,13 @@ namespace Game.ObstacleFactory
     {
         //Used for collision events with the user.
         protected Player User;
+        protected int Speed;
 
         //Enforces the parameter that is stored into user.
-        public ObstacleFactory(Player U)
+        public ObstacleFactory(Player U, int speed)
         {
             User = U;
+            Speed = speed;
         }
         //Subclasses create specified obstacle.
         public abstract Obstacle Create();

@@ -14,7 +14,7 @@ namespace Game.Entities
 {
     class Beetle : Obstacle
     {
-        public Beetle(Player U) : base(U)
+        public Beetle(Player U, int speed) : base(U, speed)
         {
             //Initial position
             Position = new Point(1440, 420); //Magic numbers for start pos.
