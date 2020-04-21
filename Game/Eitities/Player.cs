@@ -21,13 +21,16 @@ namespace Game.Entities
         running,
         Jumping,
         falling, 
-        ducking
+        ducking,
+        left,
+        right
     }
     class Player : Entity
     {
         States playerState;
+
         int duckDist = 20, playerFloor;
-        Point JumpVelocity = new Point(0, 15); //Magic numbers for jumping
+        Point JumpVelocity = new Point(0, 40); //Magic numbers for jumping
         public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation;
 
         public Player() : base()
@@ -99,7 +102,7 @@ namespace Game.Entities
             setAnimation();
 
             //reaches top of jump, so start falling.
-            if (Position.Y < 420) // jump max (lower Y = higher pos)
+            if (Position.Y < 450) // jump max (lower Y = higher pos)
             {
                 //user starts falling
                 FallEvents();

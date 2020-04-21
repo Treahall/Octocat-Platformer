@@ -31,7 +31,7 @@ namespace Game
 
     enum Speeds
     {
-        one = 15,
+        one = 20,
         two = 30,
         three = 45,
         four = 60
@@ -58,7 +58,7 @@ namespace Game
             GameState = GameStates.MainMenu;
             distance = 0;
             level = Levels.one;
-            speed = Speeds.one;
+            speed = Speeds.two;
             //Initialize objects
             User = new Player();
             ItemSpawner = new ItemCreator();
