@@ -96,5 +96,91 @@ namespace Game.HelperClasses
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 8.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 8.png"
         };
+
+        public static readonly List<string> MagnetRun = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Middle.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Middle.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Middle.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Front.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Front.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Legs Middle.png"
+        };
+
+        public static readonly List<string> MagnetDuck = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck3.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck4.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck3.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Duck1.png"
+        };
+
+        public static readonly List<string> MagnetJump = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Jump.png"
+        };
+
+        public static readonly List<string> MagnetFall = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Magnet/Magnet Octocat Fall.png"
+        };
+
+        public static readonly List<string> ShieldRun = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Middle.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Middle.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Middle.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Forward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Forward.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Legs Middle.png"
+        };
+
+        public static readonly List<string> ShieldDuck = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck3.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck4.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck3.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck2.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck1.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield/Shield Octocat Duck1.png"
+        };
+
+        public static readonly List<string> ShieldJump = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield Octocat Jump.png"
+        };
+
+        public static readonly List<string> ShieldFall = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Shield Octocat Fall.png"
+        };
+
+        public static readonly List<string> NyanRun = new List<string>
+        {
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Octocat Nyan Cat.png",
+            "../../VisualAssets/Entities/Player/PlayerWithItems/Octocat Nyan Cat2.png"
+        };
     }
 }
