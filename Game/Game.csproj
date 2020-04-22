@@ -202,5 +202,20 @@
   <ItemGroup>
     <Resource Include="VisualAssets\Items\Octocat Nyan Cat.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\GameOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\HighScores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\Store1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\Store2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\Store3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

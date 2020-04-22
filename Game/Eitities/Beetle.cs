@@ -19,8 +19,10 @@ namespace Game.Entities
             //Initial position
             Position = new Point(1440, 420); //Magic numbers for start pos.
 
-            //Custom Initial velocity?
-            
+            //Custom Initial velocity
+            Speed = speed + 10;
+            Velocity = new Point(-Speed, 0); //Magic value for velocity.
+
         }
 
         public override void LoadAnimations()

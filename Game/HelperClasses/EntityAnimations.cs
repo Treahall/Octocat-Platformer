@@ -43,8 +43,12 @@ namespace Game.HelperClasses
         public static readonly List<string> OctocatRun = new List<string>
         {
             "../../VisualAssets/Entities/Player/Octocat Running!.png",
+            "../../VisualAssets/Entities/Player/Octocat Running!.png",
+            "../../VisualAssets/Entities/Player/Octocat Legs Backward.png",
+            "../../VisualAssets/Entities/Player/Octocat Legs Backward.png",
             "../../VisualAssets/Entities/Player/Octocat Legs Backward.png",
             "../../VisualAssets/Entities/Player/Octocat Running!.png",
+            "../../VisualAssets/Entities/Player/Octocat Legs Forward.png",
             "../../VisualAssets/Entities/Player/Octocat Legs Forward.png",
             "../../VisualAssets/Entities/Player/Octocat Running!.png"
         };
@@ -52,9 +56,20 @@ namespace Game.HelperClasses
         public static readonly List<string> Beetle = new List<string>
         {
             "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 1.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 1.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 2.png",
             "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 2.png",
             "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 3.png",
-            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 4.png"
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 3.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 4.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 4.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 4.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 3.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 3.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 2.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 2.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 1.png",
+            "../../VisualAssets/Entities/Obstacles/Bug/Bug Pose 1.png"
         };
 
         public static readonly List<string> BrokenWindow = new List<string>
@@ -65,12 +80,20 @@ namespace Game.HelperClasses
         public static readonly List<string> Slug = new List<string>
         {
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 1.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 1.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 2.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 2.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 3.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 3.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 4.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 4.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 5.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 5.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 6.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 6.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 7.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 7.png",
+            "../../VisualAssets/Entities/Obstacles/Snail/Snail 8.png",
             "../../VisualAssets/Entities/Obstacles/Snail/Snail 8.png"
         };
     }
