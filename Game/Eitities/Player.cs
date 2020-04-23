@@ -32,7 +32,7 @@ namespace Game.Entities
         public List<int> ItemsOwned = new List<int>() { 0, 0, 0, 0 };
         int duckDist = 20, playerFloor;
         Point JumpVelocity = new Point(0, 40); //Magic numbers for jumping
-        public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation
+        public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation,
             magDuck, magRun, magJump, magFall;
 
         public Player() : base()
