@@ -257,8 +257,11 @@
     <Content Include="AudioAssets\background_music.ogg" />
     <Content Include="AudioAssets\background_music.wav" />
     <Content Include="AudioAssets\hit_obstacle.ogg" />
+    <Content Include="AudioAssets\hit_obstacle.wav" />
     <Content Include="AudioAssets\jump.ogg" />
+    <Content Include="AudioAssets\jump.wav" />
     <Content Include="AudioAssets\pick_up_item.ogg" />
+    <Content Include="AudioAssets\pick_up_item.wav" />
     <Resource Include="VisualAssets\Backgrounds\Blank_Background_DarkBlue.png" />
     <Resource Include="VisualAssets\Backgrounds\Blank_Background_Grey.png" />
     <Resource Include="VisualAssets\Backgrounds\Blank_Background_Pink.png" />
