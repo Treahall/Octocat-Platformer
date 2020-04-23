@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game.ItemCreatorFile
 {
-    class EnergyDrink
+    class EnergyDrink : Item
     {
     }
 }
