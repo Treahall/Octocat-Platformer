@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using Brushes = System.Drawing.Brushes;
 using Point = System.Drawing.Point;
+using Size = System.Windows.Size;
 
 namespace Game.HelperClasses
 {
@@ -39,21 +45,36 @@ namespace Game.HelperClasses
         };
 
 
-        private static WriteableBitmap GetTextBitmap(string text, double fontSize, Color color, double opacity)
+        private static void writeTextToBitmap(WriteableBitmap bm, string text, Point point)
         {
-            TextBlock txt = new TextBlock();
-            txt.Text = text;
-            txt.FontSize = fontSize;
-            txt.Foreground = new SolidColorBrush(color);
-            txt.Opacity = opacity;
+            Font font = new Font("Times New Roman", 34);
+
+            Bitmap bmap;
+            using (MemoryStream outStream = new MemoryStream())
+            {
+                BitmapEncoder enc = new BmpBitmapEncoder();
+                enc.Frames.Add(BitmapFrame.Create((BitmapSource)bm));
+                enc.Save(outStream);
+                bmap = new System.Drawing.Bitmap(outStream);
+            }
+
+            using (Graphics g = Graphics.FromImage(bmap))
+            {
+                g.DrawString(text, font, Brushes.Black, point);
+                IntPtr hBmap = bmap.GetHbitmap();
+
+                try
+                {
+                    BitmapSource Bsource = Imaging.CreateBitmapSourceFromHBitmap(hBmap, IntPtr.Zero,
+                        Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+                    WriteableBitmap NewBmap = new WriteableBitmap(Bsource);
+
+                    bm.Blit(new System.Windows.Point(point.X, point.Y), NewBmap, new Rect(new Size((double)NewBmap.PixelWidth,
+                        (double)NewBmap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
+                }
+            }
 
             
-
-            WriteableBitmap bitmap = new WriteableBitmap((int)txt.ActualWidth, (int)txt.ActualHeight);
-            bitmap.Render(txt, null);
-            bitmap.Invalidate();
-
-            return bitmap;
         }
 
     }
