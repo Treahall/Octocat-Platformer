@@ -48,7 +48,7 @@ namespace Game
             GameEng.start();
 
             SoundPlayer gameMusic = new SoundPlayer();
-            gameMusic.SoundLocation = "../../AudioAssests/background_music.wav";
+            gameMusic.SoundLocation = "../../AudioAssets/background_music.wav";
             gameMusic.Load();
             gameMusic.PlayLooping();
         }
