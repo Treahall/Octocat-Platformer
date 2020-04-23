@@ -255,6 +255,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AudioAssests\background_music.ogg" />
+    <Content Include="AudioAssests\background_music.wav" />
     <Content Include="AudioAssests\hit_obstacle.ogg" />
     <Content Include="AudioAssests\jump.ogg" />
     <Content Include="AudioAssests\pick_up_item.ogg" />
