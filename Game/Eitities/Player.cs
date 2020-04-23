@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
 using System.Numerics;
+using Game.ItemCreatorFile;
 using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
 
@@ -28,7 +29,7 @@ namespace Game.Entities
     class Player : Entity
     {
         States playerState;
-
+        public List<int> ItemsOwned = new List<int>() { 0, 0, 0, 0, 0, 0 };
         int duckDist = 20, playerFloor;
         Point JumpVelocity = new Point(0, 40); //Magic numbers for jumping
         public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation;

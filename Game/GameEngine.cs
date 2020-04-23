@@ -10,6 +10,8 @@ using Game.Entities;
 using Game.HelperClasses;
 using System.Windows.Input;
 using System.Drawing;
+using System.Windows.Media;
+using Color = System.Windows.Media.Color;
 
 namespace Game
 {
@@ -31,19 +33,13 @@ namespace Game
         four = 40000
     }
 
-    enum Speeds
-    {
-        one = 20,
-        two = 30,
-        three = 45,
-        four = 60
-    }
 
     //Used in the world.xaml.cs with the Screen parameter of the World.xaml.
     class GameEngine
     {
         public List<Tuple<string, int>> HighScores;
-        Levels level; Speeds speed;
+        public List<Tuple<string, Point, int>> TextData = new List<Tuple<string, Point, int>>();
+        Levels level; int speed;
         GameStates GameState;
         WriteableBitmap Screen;
         ItemCreator ItemSpawner;
@@ -62,12 +58,12 @@ namespace Game
             GameState = GameStates.MainMenu;
             distance = 0;
             level = Levels.one;
-            speed = Speeds.two;
+            speed = 30;
             LoadHighScores();
             //Initialize objects
             User = new Player();
-            ItemSpawner = new ItemCreator();
-            ObstacleSpawner = new ObstacleCreator(User, (int)speed);
+            ItemSpawner = new ItemCreator(User, speed);
+            ObstacleSpawner = new ObstacleCreator(User, speed);
             backgroundAnimator = new BackgroundAnimator(screen);
             
         }
@@ -100,33 +96,79 @@ namespace Game
                     backgroundAnimator.ChangeBackground(BackgroundAssets.GameOver);
                     backgroundAnimator.LoadBackground();
                     GameState = GameStates.GameOver;
+                    return;
                 }
 
                 //TO DO: update the distance and other graphics
-                UpdateDistance();
-                SpawnObstacles();
+                
+                SpawnThings();
                 backgroundAnimator.LoadAll();
+                UpdateDistance();
             } 
         }
 
         void UpdateDistance()
         {
-            distance += (int)speed;
-            Interval += (int)speed;
-        }
+            Point dest = new Point(1105, 28);
+            distance += speed;
+            OInterval += speed;
+            IInterval += speed;
 
-        void SpawnItems()
-        {
+            TextData.Add(new Tuple<string, Point, int>(distance.ToString(), dest ,30));
 
-        }
-
-        int spawnInterval = 500;
-        int Interval = 0;
-        void SpawnObstacles()
-        {
-            if (Interval >= spawnInterval)
+            if (distance > (int)Levels.one)
             {
-                Interval = 0;
+                level = Levels.two;
+            }
+            else if (distance > (int)Levels.two)
+            {
+                level = Levels.three;
+            }
+            else if (distance > (int)Levels.three)
+            {
+                level = Levels.four;
+            }
+
+        }
+
+        int ItemInterval;
+        int IInterval = 0;
+        int ObstacleInterval;
+        int OInterval = 0;
+        void SpawnThings()
+        {
+            switch (level)
+            {
+                case Levels.one:
+                    ObstacleInterval = 800;
+                    ItemInterval = 1000;
+                    break;
+                case Levels.two:
+                    ObstacleInterval = 700;
+                    ItemInterval = 1500;
+                    break;
+                case Levels.three:
+                    ObstacleInterval = 600;
+                    ItemInterval = 2000;
+                    break;
+                case Levels.four:
+                    ObstacleInterval = 500;
+                    ItemInterval = 2500;
+                    break;
+                default:
+                    break;
+            }
+
+            //controls item spawn
+            if (IInterval >= ItemInterval)
+            {
+                IInterval = 0;
+                FrameHandler.Items.Add(ItemSpawner.SpawnRandom(level));
+            }
+            //controls obstacle spawn
+            if (OInterval >= ObstacleInterval)
+            {
+                OInterval = 0;
                 FrameHandler.Entities.Add(ObstacleSpawner.getRandom());
             }
         }
@@ -202,10 +244,12 @@ namespace Game
         {
             Point NamePoint = new Point(NameX, Y);
             Point ScorePoint = new Point(ScoreX, Y);
+
+
             foreach (var item in HighScores)
             {
-                BackgroundAssets.WriteTextToBitmap(Screen, item.Item1, NamePoint, 30);
-                BackgroundAssets.WriteTextToBitmap(Screen, item.Item2.ToString(), ScorePoint, 30);
+                TextData.Add(new Tuple<string, Point, int>(item.Item1, NamePoint, 30));
+                TextData.Add(new Tuple<string, Point, int>(item.Item2.ToString(), ScorePoint, 30));
                 NamePoint.Offset(0, 40);
                 ScorePoint.Offset(0, 40);
             }

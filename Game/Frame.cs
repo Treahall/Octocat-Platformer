@@ -40,6 +40,7 @@ namespace Game
         //triggers the update functions of objects and enforces pausing.
         private void Update(object sender, EventArgs e)
         {
+
             //if paused then wait until unpaused
             if (paused)
             {
@@ -63,10 +64,16 @@ namespace Game
 
                     foreach (var item in Items)
                     {
-                        item.Update();
+                        item.Update(Screen);
+                    }
+                    if (GameEng.TextData.Count() != 0)
+                    {
+                        BackgroundAssets.WriteTextToBitmap(Screen, GameEng.TextData);
+                        GameEng.TextData.Clear();
                     }
                 }
-            }          
+            }
+  
         }
 
         private void RemoveDeadAndPickedUp()

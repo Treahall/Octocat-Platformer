@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Game.Entities;
+using Game.HelperClasses;
 
 namespace Game.ItemCreatorFile
 {
@@ -11,7 +13,8 @@ namespace Game.ItemCreatorFile
     {
         public Item(Player U, int speed) : base(U, speed)
         {
-
+            Position = new Point(1440, EntityAnimations.Floor - GetSpriteSize().Height);
+            PickedUp = false;
         }
 
         public bool PickedUp;
@@ -20,9 +23,5 @@ namespace Game.ItemCreatorFile
 
         public override abstract void LoadAnimations();
 
-        public void Update()
-        {
-            PickedUp = false;
-        }
     }
 }

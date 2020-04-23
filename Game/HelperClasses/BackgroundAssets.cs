@@ -45,9 +45,8 @@ namespace Game.HelperClasses
         };
 
 
-        public static void WriteTextToBitmap(WriteableBitmap bm, string text, Point point, int FontSize)
+        public static void WriteTextToBitmap(WriteableBitmap bm, List<Tuple<String, Point, int>> data)
         {
-            Font font = new Font("Times New Roman", FontSize);
 
             Bitmap bmap;
             using (MemoryStream outStream = new MemoryStream())
@@ -60,7 +59,13 @@ namespace Game.HelperClasses
 
             using (Graphics g = Graphics.FromImage(bmap))
             {
-                g.DrawString(text, font, Brushes.Black, point);
+                Font font;
+                foreach (var item in data)
+                {
+                    font = new Font("Times New Roman", item.Item3);
+                    g.DrawString(item.Item1, font, Brushes.Black, item.Item2);
+                }
+                
                 IntPtr hBmap = bmap.GetHbitmap();
 
                 try
