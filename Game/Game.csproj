@@ -258,6 +258,12 @@
     <Content Include="AudioAssests\hit_obstacle.ogg" />
     <Content Include="AudioAssests\jump.ogg" />
     <Content Include="AudioAssests\pick_up_item.ogg" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_DarkBlue.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Grey.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Pink.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Purple.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Red.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Yellow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -28,6 +28,12 @@ namespace Game.HelperClasses
         public static string High_Scores = "../../VisualAssets/Backgrounds/HighScores.png";
         public static string GameOver = "../../VisualAssets/Backgrounds/GameOver.png";
 
+        public static string Background_Red = "../../VisualAssets/Backgrounds/Blank_Background_Red.png";
+        public static string Background_DarkBlue = "../../VisualAssets/Backgrounds/Blank_Background_DarkBlue.png";
+        public static string Background_Grey = "../../VisualAssets/Backgrounds/Blank_Background_Grey.png";
+        public static string Background_Pink = "../../VisualAssets/Backgrounds/Blank_Background_Pink.png";
+        public static string Background_Purple = "../../VisualAssets/Backgrounds/Blank_Background_Purple.png";
+        public static string Background_Yellow = "../../VisualAssets/Backgrounds/Blank_Background_Yellow.png";
 
         public static readonly List<string> OctocatRed = new List<string>
         {
