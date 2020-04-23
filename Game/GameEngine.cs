@@ -154,7 +154,7 @@ namespace Game
                 GameState = GameStates.GameRunning;
             }
             //go to the highscores menu
-            else if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            else if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.Right))
             {
                 backgroundAnimator.ChangeBackground(BackgroundAssets.High_Scores);
                 backgroundAnimator.LoadBackground();
@@ -183,12 +183,19 @@ namespace Game
         //Keeps track of event triggers for the high scores menu.
         public void HighScoreEvents()
         {
+            WriteHighScores();
+
             if (Keyboard.IsKeyDown(Key.Space))
             {
                 backgroundAnimator.ChangeBackground(BackgroundAssets.Start_Screen);
                 backgroundAnimator.LoadBackground();
                 GameState = GameStates.MainMenu;
             }
+        }
+
+        void WriteHighScores()
+        {
+
         }
 //=============================================================================================
         //Triggers events based on the state of the game.

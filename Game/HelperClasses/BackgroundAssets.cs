@@ -5,6 +5,9 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using Point = System.Drawing.Point;
 
 namespace Game.HelperClasses
@@ -35,8 +38,23 @@ namespace Game.HelperClasses
             ""
         };
 
-        
 
+        private static WriteableBitmap GetTextBitmap(string text, double fontSize, Color color, double opacity)
+        {
+            TextBlock txt = new TextBlock();
+            txt.Text = text;
+            txt.FontSize = fontSize;
+            txt.Foreground = new SolidColorBrush(color);
+            txt.Opacity = opacity;
+
+            
+
+            WriteableBitmap bitmap = new WriteableBitmap((int)txt.ActualWidth, (int)txt.ActualHeight);
+            bitmap.Render(txt, null);
+            bitmap.Invalidate();
+
+            return bitmap;
+        }
 
     }
 }
