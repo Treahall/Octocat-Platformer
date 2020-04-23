@@ -33,7 +33,8 @@ namespace Game.Entities
         int duckDist = 20, playerFloor;
         Point JumpVelocity = new Point(0, 40); //Magic numbers for jumping
         public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation,
-            magDuck, magRun, magJump, magFall;
+            magDuck, magRun, magJump, magFall, shieldDuck, shieldRun, shieldJump, shieldFall,
+            nyanRun;
 
         public Player() : base()
         {
@@ -160,6 +161,15 @@ namespace Game.Entities
             jumpAnimation = HelperClasses.EntityAnimations.OctocatJump;
             duckAnimation = HelperClasses.EntityAnimations.OctocatDuck;
             fallAnimation = HelperClasses.EntityAnimations.OctocatFalling;
+            magDuck = HelperClasses.EntityAnimations.MagnetDuck;
+            magRun = HelperClasses.EntityAnimations.MagnetRun;
+            magJump = HelperClasses.EntityAnimations.MagnetJump;
+            magFall = HelperClasses.EntityAnimations.MagnetFall;
+            shieldDuck = HelperClasses.EntityAnimations.ShieldDuck;
+            shieldRun = HelperClasses.EntityAnimations.ShieldRun;
+            shieldJump = HelperClasses.EntityAnimations.ShieldJump;
+            shieldFall = HelperClasses.EntityAnimations.ShieldFall;
+            nyanRun = HelperClasses.EntityAnimations.NyanRun;
         }
 
 //=============================================================================================

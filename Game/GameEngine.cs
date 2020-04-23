@@ -186,6 +186,18 @@ namespace Game
                 GameState = GameStates.MainMenu;
             }
             //enter a highscore.
+            Point NamePoint = new Point(795, 350);
+            Point ScorePoint = new Point(1000, 350);
+
+            foreach (var item in HighScores)
+            {
+                TextData.Add(new Tuple<string, Point, int>(item.Item1, NamePoint, 30));
+                TextData.Add(new Tuple<string, Point, int>(item.Item2.ToString(), ScorePoint, 25));
+                NamePoint.Offset(0, 33);
+                ScorePoint.Offset(0, 33);
+            }
+            Point dest = new Point(375, 365);
+            TextData.Add(new Tuple<string, Point, int>(distance.ToString(), dest, 30));
 
         }
 //=============================================================================================
