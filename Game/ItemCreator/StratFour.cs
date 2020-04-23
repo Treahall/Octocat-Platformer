@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Game.ItemCreatorFile
 {
-    class StratFour
+    class StratFour : ItemStrategies
     {
     }
 }
