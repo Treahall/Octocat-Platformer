@@ -15,7 +15,8 @@ namespace Game.ItemCreatorFile
         }
         public override void CollisionEvents()
         {
-
+            PickedUp = true;
+            User.ItemsOwned[0] += 1;
         }
 
         public override void LoadAnimations()

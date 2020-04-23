@@ -15,6 +15,8 @@ namespace Game.ItemCreatorFile
         }
         public override void CollisionEvents()
         {
+            PickedUp = true;
+            User.ItemsOwned[5] += 1;
 
         }
 
