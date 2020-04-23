@@ -79,7 +79,7 @@
     <Compile Include="ItemCreator\ItemStrategies.cs" />
     <Compile Include="ItemCreator\Magnet.cs" />
     <Compile Include="ItemCreator\NyanCat.cs" />
-    <Compile Include="ItemCreator\SpeedBoost.cs" />
+    <Compile Include="ItemCreator\Shield.cs" />
     <Compile Include="ItemCreator\StratFour.cs" />
     <Compile Include="ItemCreator\StratOne.cs" />
     <Compile Include="ItemCreator\StratThree.cs" />

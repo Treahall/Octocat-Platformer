@@ -7,9 +7,9 @@ using Game.Entities;
 
 namespace Game.ItemCreatorFile
 {
-    class Coffee : Item
+    class Shield : Item
     {
-        public Coffee(Player U, int speed) : base(U, speed)
+        public Shield(Player U, int speed) : base(U, speed)
         {
 
         }
@@ -20,7 +20,7 @@ namespace Game.ItemCreatorFile
 
         public override void LoadAnimations()
         {
-            CurrentAnimation = HelperClasses.ItemAnimations.CoffeeCup;
+            CurrentAnimation = HelperClasses.ItemAnimations.Shield;
         }
     }
 }
