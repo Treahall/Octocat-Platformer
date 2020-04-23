@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Game.HelperClasses;
 using Game.Properties;
+using System.Media;
 
 namespace Game
 {
@@ -45,6 +46,11 @@ namespace Game
             // Initializes the object that runs the game.
             GameEng = new GameEngine(Screen);
             GameEng.start();
+
+            SoundPlayer gameMusic = new SoundPlayer();
+            gameMusic.SoundLocation = "../../AudioAssets/background_music.wav";
+            gameMusic.Load();
+            gameMusic.PlayLooping();
         }
     }
 }
