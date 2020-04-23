@@ -14,6 +14,10 @@ namespace Game.Entities
         {
             //Initial position
             Position = new Point(1440, EntityAnimations.Floor - GetSpriteSize().Height); //Magic numbers for start pos.
+
+            //Custom Initial velocity
+            Speed = speed - 2;
+            Velocity = new Point(-Speed, 0); //Magic value for velocity.
         }
 
         public override void LoadAnimations()

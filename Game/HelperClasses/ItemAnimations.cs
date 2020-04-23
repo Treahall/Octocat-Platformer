@@ -18,22 +18,23 @@ namespace Game.HelperClasses
 
         public static readonly List<string> EnergyDrink = new List<string>
         {
-            ""
+            "../../VisualAssets/Items/Energy Drink.png"
         };
 
         public static readonly List<string> NyanCat = new List<string>
         {
-            "../../VisualAssets/Items/Octocat Nyan Cat.png"
+            "../../VisualAssets/Items/Nyan Cat!.png",
+            "../../VisualAssets/Items/Nyan Cat2.png"
         };
 
         public static readonly List<string> Magnet = new List<string>
         {
-            ""
+            "../../VisualAssets/Items/Magnet.png"
         };
 
-        public static readonly List<string> SpeedBoost = new List<string>
+        public static readonly List<string> Shield = new List<string>
         {
-            ""
+            "../../VisualAssets/Items/Shield.png"
         };
     }
 }

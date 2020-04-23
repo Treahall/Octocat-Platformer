@@ -15,7 +15,9 @@ namespace Game.HelperClasses
         public static string Running_Background = "../../VisualAssets/Backgrounds/Blank_Background.png";
         public static string Clouds = "../../VisualAssets/Backgrounds/Clouds.png";
         public static string Foreground = "../../VisualAssets/Backgrounds/Foreground.png";
-        public static string Store = "";
+        public static string Store = "../../VisualAssets/Backgrounds/Store1.png";
+        public static string High_Scores = "../../VisualAssets/Backgrounds/HighScores.png";
+        public static string GameOver = "../../VisualAssets/Backgrounds/GameOver.png";
 
 
         public static readonly List<string> OctocatRed = new List<string>

@@ -17,7 +17,8 @@ namespace Game
         MainMenu,
         GameRunning,
         GameOver,
-        Store
+        Store,
+        HighScores
     }
 
     //levels based on minimum distance 
@@ -92,8 +93,8 @@ namespace Game
                 {
                     FrameHandler.Entities.Clear();
                     FrameHandler.Items.Clear();
-                    //backgroundAnimator.ChangeBackground(BackgroundAssets.GameOver)
-                    //backgroundAnimator.LoadBackground();
+                    backgroundAnimator.ChangeBackground(BackgroundAssets.GameOver);
+                    backgroundAnimator.LoadBackground();
                     GameState = GameStates.GameOver;
                 }
 
@@ -155,12 +156,38 @@ namespace Game
             //go to the highscores menu
             else if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
             {
-
+                backgroundAnimator.ChangeBackground(BackgroundAssets.High_Scores);
+                backgroundAnimator.LoadBackground();
+                GameState = GameStates.HighScores;
             }
             //go to the store
             else if (Keyboard.IsKeyDown(Key.Tab))
             {
-
+                backgroundAnimator.ChangeBackground(BackgroundAssets.Store);
+                backgroundAnimator.LoadBackground();
+                GameState = GameStates.Store;
+            }
+        }
+//=============================================================================================
+        //Keeps track of event triggers for the store.
+        public void StoreEvents()
+        {
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                backgroundAnimator.ChangeBackground(BackgroundAssets.Start_Screen);
+                backgroundAnimator.LoadBackground();
+                GameState = GameStates.MainMenu;
+            }
+        }
+//=============================================================================================
+        //Keeps track of event triggers for the high scores menu.
+        public void HighScoreEvents()
+        {
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                backgroundAnimator.ChangeBackground(BackgroundAssets.Start_Screen);
+                backgroundAnimator.LoadBackground();
+                GameState = GameStates.MainMenu;
             }
         }
 //=============================================================================================
@@ -179,6 +206,10 @@ namespace Game
                     GameOverEvents();
                     break;
                 case GameStates.Store:
+                    StoreEvents();
+                    break;
+                case GameStates.HighScores:
+                    HighScoreEvents();
                     break;
                 default:
                     break;
