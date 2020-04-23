@@ -96,6 +96,7 @@ namespace Game
                     backgroundAnimator.ChangeBackground(BackgroundAssets.GameOver);
                     backgroundAnimator.LoadBackground();
                     GameState = GameStates.GameOver;
+                    distance = 0;
                     return;
                 }
 
@@ -115,6 +116,7 @@ namespace Game
             IInterval += speed;
 
             TextData.Add(new Tuple<string, Point, int>(distance.ToString(), dest ,30));
+            DrawItemsOwned();
 
             if (distance > (int)Levels.one)
             {
@@ -128,6 +130,19 @@ namespace Game
             {
                 level = Levels.four;
             }
+
+        }
+
+        public void DrawItemsOwned()
+        {
+            Point dest = new Point(795, 25);
+            TextData.Add(new Tuple<string, Point, int>(User.ItemsOwned[3].ToString(), dest, 30));
+            dest.Offset(-460, 0);
+            TextData.Add(new Tuple<string, Point, int>(User.ItemsOwned[2].ToString(), dest, 30));
+            dest.Offset(-145, 0);
+            TextData.Add(new Tuple<string, Point, int>(User.ItemsOwned[1].ToString(), dest, 30));
+            dest.Offset(-145, 0);
+            TextData.Add(new Tuple<string, Point, int>(User.ItemsOwned[0].ToString(), dest, 30));
 
         }
 
@@ -182,6 +197,7 @@ namespace Game
             {
                 User.dead = false;
                 backgroundAnimator.ChangeBackground(BackgroundAssets.Start_Screen);
+                TextData.Clear();
                 backgroundAnimator.LoadBackground();
                 GameState = GameStates.MainMenu;
             }
@@ -204,12 +220,14 @@ namespace Game
         //Keeps track of event triggers for the main menu.
         public void MenuEvents()
         {
+            backgroundAnimator.LoadBackground();
             //Add the user to FrameHandler and start running the game.
             if (Keyboard.IsKeyDown(Key.Enter))
             {
                 backgroundAnimator.ChangeBackground(BackgroundAssets.Running_Background);
                 FrameHandler.Entities.Add(User);
                 GameState = GameStates.GameRunning;
+                DrawItemsOwned();
             }
             //go to the highscores menu
             else if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.Right))
