@@ -9,6 +9,7 @@ using Game.ObstacleFactory;
 using Game.Entities;
 using Game.HelperClasses;
 using System.Windows.Input;
+using System.Drawing;
 
 namespace Game
 {
@@ -41,6 +42,7 @@ namespace Game
     //Used in the world.xaml.cs with the Screen parameter of the World.xaml.
     class GameEngine
     {
+        public List<Tuple<string, int>> HighScores;
         Levels level; Speeds speed;
         GameStates GameState;
         WriteableBitmap Screen;
@@ -54,12 +56,14 @@ namespace Game
         //Constructor
         public GameEngine(WriteableBitmap screen)
         {
+
             //set values for objects.
             Screen = screen;
             GameState = GameStates.MainMenu;
             distance = 0;
             level = Levels.one;
             speed = Speeds.two;
+            LoadHighScores();
             //Initialize objects
             User = new Player();
             ItemSpawner = new ItemCreator();
@@ -158,6 +162,7 @@ namespace Game
             {
                 backgroundAnimator.ChangeBackground(BackgroundAssets.High_Scores);
                 backgroundAnimator.LoadBackground();
+                WriteHighScores(530, 775, 270);
                 GameState = GameStates.HighScores;
             }
             //go to the store
@@ -183,7 +188,6 @@ namespace Game
         //Keeps track of event triggers for the high scores menu.
         public void HighScoreEvents()
         {
-            WriteHighScores();
 
             if (Keyboard.IsKeyDown(Key.Space))
             {
@@ -193,9 +197,27 @@ namespace Game
             }
         }
 
-        void WriteHighScores()
+        //writes the highscores on the current screen.
+        void WriteHighScores(int NameX, int ScoreX, int Y)
         {
+            Point NamePoint = new Point(NameX, Y);
+            Point ScorePoint = new Point(ScoreX, Y);
+            foreach (var item in HighScores)
+            {
+                BackgroundAssets.WriteTextToBitmap(Screen, item.Item1, NamePoint, 30);
+                BackgroundAssets.WriteTextToBitmap(Screen, item.Item2.ToString(), ScorePoint, 30);
+                NamePoint.Offset(0, 40);
+                ScorePoint.Offset(0, 40);
+            }
+        }
 
+        void LoadHighScores()
+        {
+            HighScores = new List<Tuple<string, int>>();
+            for (int i = 0; i < 10; i++)
+            {
+                HighScores.Add(new Tuple<string, int>("-------", 0));
+            }
         }
 //=============================================================================================
         //Triggers events based on the state of the game.

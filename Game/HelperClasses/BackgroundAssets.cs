@@ -45,9 +45,9 @@ namespace Game.HelperClasses
         };
 
 
-        private static void writeTextToBitmap(WriteableBitmap bm, string text, Point point)
+        public static void WriteTextToBitmap(WriteableBitmap bm, string text, Point point, int FontSize)
         {
-            Font font = new Font("Times New Roman", 34);
+            Font font = new Font("Times New Roman", FontSize);
 
             Bitmap bmap;
             using (MemoryStream outStream = new MemoryStream())
@@ -69,9 +69,10 @@ namespace Game.HelperClasses
                         Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
                     WriteableBitmap NewBmap = new WriteableBitmap(Bsource);
 
-                    bm.Blit(new System.Windows.Point(point.X, point.Y), NewBmap, new Rect(new Size((double)NewBmap.PixelWidth,
+                    bm.Blit(new System.Windows.Point(0,0), NewBmap, new Rect(new Size((double)NewBmap.PixelWidth,
                         (double)NewBmap.PixelHeight)), Colors.White, WriteableBitmapExtensions.BlendMode.Alpha);
                 }
+                finally { }
             }
 
             
