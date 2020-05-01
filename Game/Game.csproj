@@ -79,7 +79,7 @@
     <Compile Include="ItemCreator\ItemStrategies.cs" />
     <Compile Include="ItemCreator\Magnet.cs" />
     <Compile Include="ItemCreator\NyanCat.cs" />
-    <Compile Include="ItemCreator\SpeedBoost.cs" />
+    <Compile Include="ItemCreator\Shield.cs" />
     <Compile Include="ItemCreator\StratFour.cs" />
     <Compile Include="ItemCreator\StratOne.cs" />
     <Compile Include="ItemCreator\StratThree.cs" />
@@ -128,9 +128,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AudioAssets\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="VisualAssets\Backgrounds\country-platform-preview.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -200,7 +198,76 @@
     <Resource Include="VisualAssets\Items\Coffee Cup.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="VisualAssets\Items\Octocat Nyan Cat.png" />
+    <Resource Include="VisualAssets\Backgrounds\GameOver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\HighScores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\Store1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\Store2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Backgrounds\Store3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Items\Energy Drink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Items\Shield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Items\Magnet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Items\Nyan Cat!.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Items\Nyan Cat2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Duck1.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Duck2.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Duck3.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Duck4.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Fall.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Jump.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Legs Backward.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Legs Forward.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Shield\Shield Octocat Legs Middle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Nyan Cat\Octocat Nyan Cat.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Nyan Cat\Octocat Nyan Cat2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Duck1.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Duck2.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Duck3.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Duck4.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Fall.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Jump.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Legs Backward.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Legs Front.png" />
+    <Resource Include="VisualAssets\Entities\Player\PlayerWithItems\Magnet\Magnet Octocat Legs Middle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AudioAssets\background_music.ogg" />
+    <Content Include="AudioAssets\background_music.wav" />
+    <Content Include="AudioAssets\hit_obstacle.ogg" />
+    <Content Include="AudioAssets\hit_obstacle.wav" />
+    <Content Include="AudioAssets\jump.ogg" />
+    <Content Include="AudioAssets\jump.wav" />
+    <Content Include="AudioAssets\pick_up_item.ogg" />
+    <Content Include="AudioAssets\pick_up_item.wav" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_DarkBlue.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Grey.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Pink.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Purple.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Red.png" />
+    <Resource Include="VisualAssets\Backgrounds\Blank_Background_Yellow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

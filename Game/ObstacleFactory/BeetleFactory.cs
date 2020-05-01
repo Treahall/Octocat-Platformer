@@ -9,12 +9,12 @@ namespace Game.ObstacleFactory
 {
     class BeetleFactory : ObstacleFactory
     {
-        public BeetleFactory(Player U) : base(U) { }
+        public BeetleFactory(Player U, int speed) : base(U, speed) { }
 
         //Creates a new beetle
         public override Obstacle Create()
         {
-            return new Beetle(User);
+            return new Beetle(User, Speed);
         }
 
     }

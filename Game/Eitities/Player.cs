@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Windows.Media.Imaging.WriteableBitmapExtensions;
 using System.Numerics;
+using Game.ItemCreatorFile;
 using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
 
@@ -21,14 +22,19 @@ namespace Game.Entities
         running,
         Jumping,
         falling, 
-        ducking
+        ducking,
+        left,
+        right
     }
     class Player : Entity
     {
         States playerState;
+        public List<int> ItemsOwned = new List<int>() { 0, 0, 0, 0 };
         int duckDist = 20, playerFloor;
-        Point JumpVelocity = new Point(0, 15); //Magic numbers for jumping
-        public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation;
+        Point JumpVelocity = new Point(0, 40); //Magic numbers for jumping
+        public List<string> jumpAnimation, duckAnimation, fallAnimation, runAnimation,
+            magDuck, magRun, magJump, magFall, shieldDuck, shieldRun, shieldJump, shieldFall,
+            nyanRun;
 
         public Player() : base()
         {
@@ -99,7 +105,7 @@ namespace Game.Entities
             setAnimation();
 
             //reaches top of jump, so start falling.
-            if (Position.Y < 420) // jump max (lower Y = higher pos)
+            if (Position.Y < 450) // jump max (lower Y = higher pos)
             {
                 //user starts falling
                 FallEvents();
@@ -155,6 +161,15 @@ namespace Game.Entities
             jumpAnimation = HelperClasses.EntityAnimations.OctocatJump;
             duckAnimation = HelperClasses.EntityAnimations.OctocatDuck;
             fallAnimation = HelperClasses.EntityAnimations.OctocatFalling;
+            magDuck = HelperClasses.EntityAnimations.MagnetDuck;
+            magRun = HelperClasses.EntityAnimations.MagnetRun;
+            magJump = HelperClasses.EntityAnimations.MagnetJump;
+            magFall = HelperClasses.EntityAnimations.MagnetFall;
+            shieldDuck = HelperClasses.EntityAnimations.ShieldDuck;
+            shieldRun = HelperClasses.EntityAnimations.ShieldRun;
+            shieldJump = HelperClasses.EntityAnimations.ShieldJump;
+            shieldFall = HelperClasses.EntityAnimations.ShieldFall;
+            nyanRun = HelperClasses.EntityAnimations.NyanRun;
         }
 
 //=============================================================================================
@@ -189,5 +204,6 @@ namespace Game.Entities
                 AnimationIndex = 0;
             }
         }
+
     }
 }

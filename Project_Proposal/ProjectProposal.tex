@@ -152,7 +152,7 @@
 
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-The project is a side scroller that draws inspiration from Google Chromes' dinosaur game easter egg. It is going to be computer science themed with Octocat running and trying to avoid "bugs and broken windows" as obstacles. The form of currency in the game is energy by caffeinated products, which can be used to buy in game upgrades. The main goal is to survive as long as possible, and you are told the total distance you traveled (given by a running counter).
+The project is a side scroller that draws inspiration from Google Chromes' dinosaur game easter egg. It is computer science themed with Octocat running and trying to avoid "bugs and broken windows" as obstacles. The form of currency in the game is energy by caffeinated products, which should be used to buy in game upgrades. The main goal is to survive as long as possible, and you are told the total distance you traveled (given by a running counter).
 \end{abstract}
 
 }
@@ -182,31 +182,36 @@ Challenges we foresee are getting the screen to scroll and making sure everythin
 If not familiar with the concept of a platformer, it is a two dimensional game with a player that can move within that plane. Examples of games like that include the original Mario games, Flappy Birds, Terraria, Donkey Kong and many more! These games of our childhood have inspired us to create one of our very own.
 
 
+
 \subsection{Challenges}
-There are many challenges to cresting a video game in WPF, but ones that stand out to us are: scrolling, timing, and pixel art.
+There are many challenges to creating a video game in WPF, but ones that stand out to us are: scrolling, timing, and pixel art.
 
-\subsubsection{Scrolling} The screen needs to scroll to the right. That is going to require auto generation of the screen from the right and deletion from the left to give the user the illusion of movement. 
+\begin{itemize}
 
-\subsubsection{Timing}There are many elements that rely on a system for keeping track of time. The obvious one is the user needs to know how long they survived. Other than that though, enemy and player velocity depend on the amount of time passed (in this instance pixels per second).
+\item The screen needs to scroll to the right. That is going 	to require auto generation of the screen from the right and 		deletion from the left to give the user the illusion of 			movement. 
 
-\subsubsection{Pixel Art}All graphics are going to be complicated since its on WPF, and we must implement a system that consistently updates the window so that you can see the graphics move. Not only do we need to time movement, but we also need to change the art with every update so that it looks like characters are moving (walking, running, flying, etc).
+\item There are many elements that rely on a system for keeping track of time. The obvious one is the user needs to know how long they survived. Other than that though, enemy and player velocity depend on the amount of time passed (in this instance pixels per second).
 
+\item All graphics are going to be complicated since its on WPF, and we must implement a system that consistently updates the window so that you can see the graphics move. Not only do we need to time movement, but we also need to change the art with every update so that it looks like characters are moving (walking, running, flying, etc).
 
+\end{itemize}
 
 \section{Scope}
 The game begins with Octocat auto running toward the right after a user hits "start". When Octocat is running randomized obstacles (broken windows and bugs) will generate from the right of the window; the player will have to avoid them by jumping or ducking. The further you survive (distance is displayed on the screen and counting as you play) the faster the Octocat will run. When you die it will display the distance that you traveled as well as items collected on that round. The user can use energy from caffeinated items they pick up to buy upgrades (minimally one upgrade). The requirements seem simple at first, but are difficult to fulfill.
 
-
 \subsection{Stretch Goals}
 There are a lot of additions we would like to add to the game, but two that we believe would add the most to the user experience are long-term high scores and adding more power ups and other useful items into the game.
 
-\subsubsection{Stored High Scores}
-We want to keep a record of the top ten scores and allow the user to enter a name to associate with it (just three letters like the retro games in arcades). This should be accessible from a button on the menu. The goal is to make it keep track even if you close the game and re-open it.
+\begin{itemize}
 
-\subsubsection{More Items} We want to add more items to buy. Things that we would like to include are an invincibility power-up where Octocat will start riding a flying rainbow cat avoiding all obstacles, a companion (it just follows the player around), a magnet power-up for pulling in items from a distance, and a variety of colors for Octocat.
+\item We want to keep a record of the top ten scores and allow the user to enter a name to associate with it (just three letters like the retro games in arcades). This should be accessible from a button on the keyboard as directed by the menu. The goal is to make it keep track even if you close the game and re-open it.
+
+\item We want to add more items to buy. Things that we would like to include are an invincibility power-up where Octocat will start riding a flying rainbow cat avoiding all obstacles, a companion (it just follows the player around), a magnet power-up for pulling in items from a distance, a shield for taking damage until it is destroyed, and a variety of colors for Octocat.
+
+\end{itemize}
 
 \subsection{Requirements}
-To make the game functional and provide each user with a good experience, it will have to follow the requirements we gathered below:
+To make the game functional and provide each user with a good experience, it will have to follow functional and nonfunctional requirements. We gathered these requirements by looking at other platformers and brainstorming.
 
 \subsubsection{Functional}
 \begin{itemize}
@@ -269,9 +274,9 @@ Use Case ID & Use Case Name & Primary Actor & Complexity & Priority \\
 \begin{itemize}
 \item[Use Case Number:] 1
 \item[Use Case Name:] Adding a new high score
-\item[Description:] The user has survived longer than an existing high score, or there is an empty slot in the high scores. Thus, the user is prompted to add there user three letter name to be displayed with the score.\end{itemize}
+\item[Description:] The user has survived longer than an existing high score, or there is an empty slot in the high scores. Thus, the user is prompted to add their user three letter name to be displayed with the score. This is use case is in conjunction with Figure 1.\end{itemize}
 
-Steps to add name to go the score:
+Steps to add name to go with the score:
 
 \begin{enumerate}
 \item User qualifies and is prompted by the game to add a name.
@@ -283,38 +288,38 @@ Steps to add name to go the score:
 \begin{itemize}
 \item[Use Case Number:] 2
 \item[Use Case Name:] Purchasing an Item
-\item[Description:] The user wants to purchase and item.
+\item[Description:] The user wants to purchase an item. This is use case is in conjunction with Figure 7.
 \item[Invariants:] The user has sufficient funds to purchase the item selected.
 \end{itemize}
 
 Steps to buy an item from the store:
 
 \begin{enumerate}
-\item User navigates to the "store" page.
+\item User navigates to the "Store" page.
 \item User locates item.
-\item User clicks the "Buy" button bellow the item wanted.
-\item[Termination Outcome:] The price is subtracted from the users currency, and one instance if the 
+\item User presses "1", "2", or "3" to buy the item wanted.
+\item[Termination Outcome:] The price is subtracted from the users currency, and one instance of the 
 item is added to the users inventory.\\
 \end{enumerate}
 
 \begin{itemize}
 \item[Use Case Number:] 3
 \item[Use Case Name:] Viewing High Scores
-\item[Description:] The user wants to view the high scores.
+\item[Description:] The user wants to view the high scores. This is use case is in conjunction with Figure 2.
 \end{itemize}
 
 Steps to view the high scores:
 
 \begin{enumerate}
 \item User navigates to the main menu.
-\item User left clicks the "High Scores" button.
+\item User presses the "Shift" button.
 \item[Termination Outcome:] Screen displays high scores, and user can click the back button to return to the menu.\\
 \end{enumerate}
 
 \begin{itemize}
 \item[Use Case Number:] 4
 \item[Use Case Name:] Accessing Information
-\item[Description:] The user wants to access background information and controls.
+\item[Description:] The user wants to access background information and controls. This is use case is in conjunction with Figure 3.
 \end{itemize}
 
 Steps to access information:
@@ -328,21 +333,21 @@ Steps to access information:
 \begin{itemize}
 \item[Use Case Number:] 5
 \item[Use Case Name:] Start the Game.
-\item[Description:] The user wants to start the game.
+\item[Description:] The user wants to start the game. This is use case is in conjunction with Figure 1.
 \item[Precondition:] User is at the start menu.
 \end{itemize}
 
 Steps to start the game:
 
 \begin{enumerate}
-\item User left clicks the "Start" button.
+\item User presses the "Enter" button.
 \item[Termination Outcome:] The game will begin and Octocat starts auto-running.\\
 \end{enumerate}
 
 \begin{itemize}
 \item[Use Case Number:] 6
 \item[Use Case Name:] Change Octocat's Skin
-\item[Description:] The user wants to change the color of Octocat.
+\item[Description:] The user wants to change the color of Octocat. This is use case is in conjunction with Figure 6.
 \item[Precondition:] User is at the start menu.
 \end{itemize}
 
@@ -357,7 +362,7 @@ Steps to change Octocat's skin:
 \begin{itemize}
 \item[Use Case Number:] 7
 \item[Use Case Name:] Toggle Music on/off
-\item[Description:] The user want to turn the music on or off.
+\item[Description:] The user want to turn the music on or off. This is use case is in conjunction with Figure 4.
 \item[Precondition:] User is at the start menu.
 \end{itemize}
 
@@ -371,7 +376,7 @@ Steps to toggle the music:
 \begin{itemize}
 \item[Use Case Number:] 8
 \item[Use Case Name:] Toggle Sound Effects on/off
-\item[Description:] The user want to turn the sound effects  on or off.
+\item[Description:] The user want to turn the sound effects  on or off. This is use case is in conjunction with Figure 5.
 \item[Precondition:] User is at the start menu.
 \end{itemize}
 
@@ -385,21 +390,21 @@ Steps to toggle the sound effects:
 \begin{itemize}
 \item[Use Case Number:] 9
 \item[Use Case Name:] Avoid Obstacles
-\item[Description:] The user wants to avoid obstacles.
+\item[Description:] The user wants to avoid obstacles. This is use case is in conjunction with Figure 1.
 \item[Precondition:] User has started the game, by clicking the start button.
 \end{itemize}
 
 Steps to avoid obstacles:
 
 \begin{enumerate}
-\item User clicks the up(jump) or down(duck) arrow to avoid an approaching obstacle.
+\item User presses the up(jump) or down(duck) arrow to avoid an approaching obstacle.
 \item[Termination Outcome:] The user does not hit the obstacle and the game continues.\\
 \end{enumerate}
 
 \begin{itemize}
 \item[Use Case Number:] 10
 \item[Use Case Name:] Hitting Obstacles
-\item[Description:] The user fails to avoid an obstacle.
+\item[Description:] The user fails to avoid an obstacle. This is use case is in conjunction with Figure 1.
 \item[Precondition:] User has started the game, by clicking the start button.
 \end{itemize}
 
@@ -447,37 +452,54 @@ Steps to hit an obstacle:
 \label{Store}
 \end{figure}
 
-\clearpage
+\subsection{Interface}
+The interfaces below are a rough draft for the design of the games interfaces. It is what the final project looks like, but it is not the final product of our game as we hope to finish it one day.
 
-\subsection{Interface Mockups}
-The mockups below are a rough draft for the design of the games interfaces. It is not exactly what the final project will look like, but it does introduce what screens should be available and how the user will interact with them.
+\clearpage
 
 \begin{figure}[!ht] 
 \centering
-\includegraphics[scale=.2]{MockupStartScreen.jpeg}
-\caption{The start screen and menu where you can interact with the following use cases: start, view high scores, store, change skin, toggle music, toggle sound effects, view information, and quit.}
+\includegraphics[scale=.2]{StartMenu.png}
+\caption{}
 
-\includegraphics[scale=.2]{MockupIngame.jpeg}
-\caption{The screen where the user is in the game trying to avoid obstacles after starting the game. }
+\includegraphics[scale=.2]{In-Game1.png}
+\caption{}
+
+\includegraphics[scale=.2]{In-Game2.png}
+\caption{}
 \end{figure}
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=.2]{MockupEndgame.jpeg}
-\caption{The screen where the user sees stats after they hit an obstacle and can restart.}
+\includegraphics[scale=.2]{In-Game3.png}
+\caption{}
 
-\includegraphics[scale=.2]{MockupStore.jpeg}
-\caption{The screen where the user can buy items and upgrades and is accessed after entering the store from the main menu.}
+\includegraphics[scale=.2]{EndGame.png}
+\caption{}
 
-\includegraphics[scale=.2]{MockupHighscores.jpeg}
-\caption{The screen where the user can view the high scores and is accessed from the main menu.}
+\includegraphics[scale=.2]{HighscoresMockup.png}
+\caption{}
+\end{figure}
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[scale=.2]{Store1.png}
+\caption{}
+
+\includegraphics[scale=.2]{Store2.png}
+\caption{}
+
+\includegraphics[scale=.2]{Store3.png}
+\caption{}
 \end{figure}
 
 \clearpage
 
 \section{Project Timeline}
-To make sure we can keep track of what needs to be done when for the project, we have generated a timeline shown in figure 13 that outlines important tasks and when they have been accomplished over the semester. Some tasks are optional, so those have been placed towards the end—even though we may not get to them.
+To make sure we could keep track of what needed to be done when for the project, we generated a timeline shown in Figure 17 that outlines important tasks and when they needed to be accomplished over the semester. Some tasks were optional, so those were placed towards the end.
+\\
+
+Even though our timeline seemed solid, we were not able to complete some tasks, like using items and buying items from the store. We tried to stay with the timeline, but tasks took longer than predicted. A lot of the tasks were even completed out of order. Overall, our time was not budgeted very well mostly in part to not understanding how things needed to be handled for a project of this nature.
 
 \begin{figure}[!ht]
 \centering
@@ -489,24 +511,24 @@ To make sure we can keep track of what needs to be done when for the project, we
 Our project is outlined in a UML that breaks Coding with Octocat down into several classes, and it includes three design patterns that group classes together for certain tasks. The World.xaml.cs class links to the World.xaml class, which is the container for the game. World.xaml.cs creates frame handlers and a game engine to get the game running. The frame handler links to all of the entities created to keep them updated through the game engine. One of the last major class groups is for the items, which are created based on the current algorithm in place, and it is also passed through the game engine.
 
 \subsection{UML Outline}
-The UML outline shown below in figure 14 shows the structure of our program separated into classes that work together to make Coding with Octocat run. Some classes are grouped into design patterns; while, other classes do not need that functionality.
+The UML outline shown below in Figure 18 shows the structure of our program separated into classes that work together to make Coding with Octocat run. Some classes are grouped into design patterns; while, other classes do not need that functionality.
 
 \clearpage
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[scale=.18]{UML.jpg}
+\includegraphics[scale=.29]{GameUML.png}
 \caption{UML of the project.}
 \end{figure}
 
 \subsection{Design Patterns Used}
-To make Coding with Octocat functional, we are using three design patterns discussed in CSCI 352, factory method, strategy, and observer. Factory method is for generating obstacles, and strategy pattern adjusts the item appearance rate based on the distance the player has traversed. Then, there is the observer pattern that is used to keep track of the frames, and tells the player, all obstacles, and all world objects to update position.
+To make Coding with Octocat functional, we are using three design patterns discussed in CSCI 352, factory method, strategy, and observer. Factory method is for generating obstacles using ObstacleCreator.cs, Obstacle.cs, Entity.cs, ObstacleFactory.cs, and all other factory classes. The strategy pattern adjusts the item appearance rate based on the distance the player has traversed using Frame.cs, Item.cs, ItemCreator.cs, and other item-related classes. Then, there is the observer pattern that is used to keep track of the frames, and tells the player, all obstacles, and all world objects to update position using Frame.cs in conjunction with GameEngine.cs and World.xaml.cs.
 
 \section{Results}
-After two weeks of programming "Coding with Octocat", the results are minimal, and the demonstration for Group Deliverable 5 shows how much of the project is functional along with what is not. The only completed tasks would be the skeleton of the code, a moving background, and a player that only changes animation, not position. Throughout this time, some of the original plans have been altered with the addition of some extra classes to implement the moving background animation, so the UML for the project has also changed. Even though there is little to show for the past couple of weeks, there is still time to get the bulk of what is left done without including any stretch goals.
+After about a month of programming "Coding with Octocat", the results are surprising but minimal. The completed tasks would be a moving background, a player that changes position and animation, obstacle and item generation, collision detection, music implementation, a running distance display, and the ability to move between screen interfaces. A lot of the implementation was completed within the last week and a half.
 
 \subsection{Future Work}
-At the moment, there is still so much to do to make a game out of our proposal, but we are nothing if not hopeful that we can make it playable and enjoyable. We are very much behind schedule with numerous incomplete goals, so we need to focus on the next few days to make the game functional. We do not have plans to profit from the game; however, we do hope it can be added to the computer labs for future CSCI students to play. 
+Throughout this time, some of the original plans have been altered with the addition of some extra classes, like BackgroundAnimator.cs, to implement the moving background animation, so the UML for the project has also changed to include that. We did not finish a number of use cases: toggling music and SFX, changing Octocat's skin, accessing information, and adding a new high score. However, two of those use cases were only stretch goals anyways. We also did not get the use of any of the items for the player, but we did have the pixel art completed for it. We are nothing if not hopeful that we can make it playable and enjoyable in the future, and we do not have plans to profit from the game. However, we do hope it can be added to the computer labs for future CSCI students to play if we do get it finished. 
 
 % that's all folks
 \end{document}

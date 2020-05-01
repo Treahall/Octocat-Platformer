@@ -10,7 +10,7 @@ namespace Game.Entities
 {
     class Slug : Obstacle
     {
-        public Slug(Player u) : base(u)
+        public Slug(Player U, int speed) : base(U, speed)
         {
             //Initial position
             Position = new Point(1440, EntityAnimations.Floor - GetSpriteSize().Height); //Magic numbers for start pos.
